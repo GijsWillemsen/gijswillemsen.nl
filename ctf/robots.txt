@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /index.html
+
+# Maybe you will find something here
+Disallow: /ctf1/admin/
+Disallow: /ctf1/super-secret-page/
+Disallow: /ctf1/super-secret-page/admin.html
+Disallow: /ctf1/super-secret-page/login.html
+Disallow: /ctf1/admin/admin_login.html

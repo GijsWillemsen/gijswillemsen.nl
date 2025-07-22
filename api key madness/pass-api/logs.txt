@@ -1,0 +1,18 @@
+[2025-06-24 18:00:01] INFO: Login page accessed from IP 192.168.1.10
+[2025-06-24 18:00:05] INFO: User 'Bob' attempted login with username: bob_the_builder
+[2025-06-24 18:00:05] WARNING: User 'Bob' entered password: "password123" — Really?
+[2025-06-24 18:00:07] ERROR: Login failed for user 'Bob' — Incorrect password (Try harder, Bob!)
+[2025-06-24 18:00:12] INFO: User 'Alice' attempted login with username: alice_in_wonderland
+[2025-06-24 18:00:13] INFO: User 'Alice' successfully logged in — Wonderland awaits!
+[2025-06-24 18:05:23] INFO: User 'Bob' tried SQL Injection: ' OR '1'='1' --
+[2025-06-24 18:05:23] WARNING: Possible SQL Injection attempt by user 'Bob' detected and blocked
+[2025-06-24 18:06:45] INFO: User 'Alice' requested password reset — Hope she remembers the answer to "Favorite color?"
+[2025-06-24 18:07:02] INFO: User 'Bob' tried brute force login attempts — 27 attempts so far... slow down, buddy.
+[2025-06-24 18:07:15] ERROR: User 'Bob' IP temporarily blocked for 10 minutes — Too many failed attempts.
+[2025-06-24 18:08:00] INFO: User 'Alice' logged out — Said goodbye to Wonderland.
+[2025-06-24 18:15:10] INFO: User 'Bob' accessed /admin with stolen admin cookie (spoiler: it was 'admin123')
+[2025-06-24 18:15:10] ALERT: Unauthorized admin access attempt by 'Bob' — Cookie rejected.
+[2025-06-24 18:20:44] INFO: User 'Alice' logged back in — Because curiosity never killed the cat.
+[2025-06-24 18:25:30] INFO: User 'Bob' sent a suspicious payload: <script>alert('Gotcha!')</script>
+[2025-06-24 18:25:30] WARNING: XSS attempt detected from user 'Bob' — Nice try.
+[2025-06-24 18:35:50] INFO: User 'Bob' gave up and went to play Minecraft.
