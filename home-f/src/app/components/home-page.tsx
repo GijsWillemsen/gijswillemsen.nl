@@ -4,6 +4,7 @@ import imgSableLogo from "@/imports/HomePage-1/34e1a05dacba882243b613622d4121930
 import imgWlmsnLogo from "@/imports/HomePage-1/dd38095cc809e55f1fdd3091393db1050e65d719.png";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ScaledCanvas } from "./scaled-canvas";
+import { Footer } from "./footer";
 
 /** Intrinsic design dimensions of the imported Figma frame. */
 const CANVAS_WIDTH = 1865;
@@ -280,6 +281,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         <ImageWithFallback alt="SABLE logo" className="absolute h-[160.47%] left-[-87.58%] max-w-none top-[-36.1%] w-[285.27%]" src={imgSableLogo} />
       </div>
     </div>
+    <Footer onResume={onResume} onProjects={onProjects} />
     <button
       type="button"
       onClick={handleBrand}

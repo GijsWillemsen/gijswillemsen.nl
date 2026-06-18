@@ -15,7 +15,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="size-full bg-[#181818]">
+    <div className="min-h-full w-full bg-[#181818]">
       <HomePage />
     </div>
   );
