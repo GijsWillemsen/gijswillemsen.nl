@@ -1,4 +1,7 @@
 import svgPaths from "@/imports/Error-1/svg-4o99k3zvwb";
+import imgSableLogo from "@/imports/home/34e1a05dacba882243b613622d41219303fb8cb9.png";
+import imgWlmsnLogo from "@/imports/home/dd38095cc809e55f1fdd3091393db1050e65d719.png";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ScaledCanvas } from "./scaled-canvas";
 import { Footer } from "./footer";
 
@@ -63,9 +66,11 @@ function NameHeader() {
 
 interface ErrorPageProps {
   onHome?: () => void;
+  /** Error code shown in the top-left corner. */
+  code?: string;
 }
 
-export function ErrorPage({ onHome }: ErrorPageProps) {
+export function ErrorPage({ onHome, code = "404" }: ErrorPageProps) {
   const handleHome = onHome ?? (() => { window.location.href = "/"; });
 
   return (
@@ -107,7 +112,13 @@ export function ErrorPage({ onHome }: ErrorPageProps) {
               <path d={svgPaths.p2a51c100} fill="var(--fill-0, #002BFF)" id="Vector 6" />
             </svg>
           </div>
+          <p className="absolute left-[48px] top-[40px] font-['Silkscreen',sans-serif] text-[20px] text-white whitespace-nowrap">
+            {code}
+          </p>
           <NameHeader />
+          <p className="absolute left-0 right-0 top-[35%] text-center font-['Silkscreen',sans-serif] text-[20px] text-white whitespace-nowrap">
+            I see you encountered a error :)
+          </p>
           <button
             type="button"
             onClick={handleHome}
@@ -119,6 +130,21 @@ export function ErrorPage({ onHome }: ErrorPageProps) {
         </div>
       </ScaledCanvas>
       <Footer />
+      <div className="fixed bottom-4 right-4 flex items-center gap-2 opacity-30 hover:opacity-60 transition-opacity duration-300 z-50">
+        <div className="relative size-[41px] overflow-hidden">
+          <ImageWithFallback alt="WLMSN logo" className="absolute inset-0 max-w-none object-cover size-full" src={imgWlmsnLogo} />
+        </div>
+        <div className="relative size-[47px] overflow-hidden">
+          <ImageWithFallback alt="SABLE logo" className="absolute h-[160.47%] left-[-87.58%] max-w-none top-[-36.1%] w-[285.27%]" src={imgSableLogo} />
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-60 transition-opacity duration-300 focus:outline-none z-50"
+      >
+        \\gijs willemsen \\WLMSN \\SABLE
+      </button>
     </>
   );
 }
