@@ -37,6 +37,13 @@ function jsonResponse(body: unknown, request: Request, status = 200): Response {
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
+    const origin = request.headers.get("Origin") ?? "";
+    const isAllowed = 
+      origin === "https://gijswillemsen.nl" || 
+      origin.endsWith(".gijswillemsen.nl") ||
+      origin === "http://localhost:5173" ||
+      origin === "http://localhost:4173";
+
     // Handle CORS preflight
     if (request.method === "OPTIONS") {
       return new Response(null, {
@@ -49,21 +56,71 @@ export default {
 
     // GET /api/site-info — main endpoint
     if (url.pathname === "/api/site-info" && request.method === "GET") {
+      // SECURITY: Block direct browser access or unauthorized sites
+      if (!isAllowed) {
+        return new Response("Forbidden: Invalid Origin", { status: 403 });
+      }
+
+      // Start with defaults
+      const siteInfo = { ...DEFAULT_SITE_INFO };
+
       // Try to read from KV if the binding is configured
       if (env.KV) {
         try {
-          const kvData = await env.KV.get("site-info", "json");
+          const [
+            country, uptime, language, mail,
+            github_url, github_handle,
+            makerworld_url, makerworld_handle,
+            copyright_json,
+            nav_resume, nav_projects
+          ] = await Promise.all([
+            env.KV.get("country"),
+            env.KV.get("uptime"),
+            env.KV.get("language"),
+            env.KV.get("mail"),
+            env.KV.get("github_url"),
+            env.KV.get("github_handle"),
+            env.KV.get("makerworld_url"),
+            env.KV.get("makerworld_handle"),
+            env.KV.get("copyright", "json"),
+            env.KV.get("nav_resume"),
+            env.KV.get("nav_projects")
+          ]);
 
-          if (kvData) {
-            return jsonResponse(kvData, request);
-          }
-        } catch {
-          // KV read failed — fall through to defaults
+          // Deep copy defaults so we don't mutate the imported DEFAULT_SITE_INFO object structure directly
+          const hero = { ...siteInfo.hero };
+          if (country) hero.country = country;
+          if (uptime) hero.uptime = uptime;
+          if (language) hero.language = language;
+          if (mail) hero.mail = mail;
+          siteInfo.hero = hero;
+
+          const links = {
+            github: { ...siteInfo.links.github },
+            makerworld: { ...siteInfo.links.makerworld }
+          };
+          if (github_url) links.github.url = github_url;
+          if (github_handle) links.github.handle = github_handle;
+          if (makerworld_url) links.makerworld.url = makerworld_url;
+          if (makerworld_handle) links.makerworld.handle = makerworld_handle;
+          siteInfo.links = links;
+
+          if (mail) siteInfo.contact = { email: mail }; // use mail for contact email too
+
+          if (copyright_json) siteInfo.copyright = copyright_json as string[];
+
+          const navigation = { ...siteInfo.navigation };
+          if (nav_resume) navigation.resume = nav_resume;
+          if (nav_projects) navigation.projects = nav_projects;
+          siteInfo.navigation = navigation;
+          
+        } catch (e) {
+          console.error("Error reading from KV", e);
+          // KV read failed — fall through to defaults for any missing parts
         }
       }
 
-      // Return hardcoded defaults as fallback
-      return jsonResponse(DEFAULT_SITE_INFO, request);
+      return jsonResponse(siteInfo, request);
     }
 
     // 404 for everything else
