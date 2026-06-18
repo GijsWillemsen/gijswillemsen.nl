@@ -270,16 +270,16 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
             {cyberHovered ? "Hacking (°  °)" : "CYBERSECURITY"}
           </p>
         </div>
-        <div className="absolute left-[82px] size-[47px] top-[1065px]" data-name="sable logo">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <ImageWithFallback alt="SABLE logo" className="absolute h-[160.47%] left-[-87.58%] max-w-none top-[-36.1%] w-[285.27%]" src={imgSableLogo} />
-          </div>
-        </div>
-        <div className="absolute left-[17px] size-[41px] top-[1067px]" data-name="wlmsn logo">
-          <ImageWithFallback alt="WLMSN logo" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgWlmsnLogo} />
-        </div>
       </div>
     </ScaledCanvas>
+    <div className="fixed bottom-4 right-4 flex items-center gap-2 opacity-30 hover:opacity-60 transition-opacity duration-300 z-50">
+      <div className="relative size-[41px] overflow-hidden">
+        <ImageWithFallback alt="WLMSN logo" className="absolute inset-0 max-w-none object-cover size-full" src={imgWlmsnLogo} />
+      </div>
+      <div className="relative size-[47px] overflow-hidden">
+        <ImageWithFallback alt="SABLE logo" className="absolute h-[160.47%] left-[-87.58%] max-w-none top-[-36.1%] w-[285.27%]" src={imgSableLogo} />
+      </div>
+    </div>
     <button
       type="button"
       onClick={handleBrand}
