@@ -1,24 +1,23 @@
 import { DEFAULT_SITE_INFO } from "./defaults";
 
 export interface Env {
-  SITE_CONTENT?: KVNamespace; // Optional — enable by adding KV binding in wrangler.jsonc
+  KV?: KVNamespace;
 }
-
-/** Allowed origins for CORS. */
-const ALLOWED_ORIGINS = [
-  "https://gijswillemsen.nl",
-  "https://www.gijswillemsen.nl",
-  "https://home.gijswillemsen.nl",
-  "http://localhost:5173", // Vite dev server
-  "http://localhost:4173", // Vite preview
-];
 
 function corsHeaders(request: Request): Record<string, string> {
   const origin = request.headers.get("Origin") ?? "";
-  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  
+  // Allow gijswillemsen.nl and any of its subdomains (like home.gijswillemsen.nl), plus local dev
+  const isAllowed = 
+    origin === "https://gijswillemsen.nl" || 
+    origin.endsWith(".gijswillemsen.nl") ||
+    origin === "http://localhost:5173" ||
+    origin === "http://localhost:4173";
+
+  const allowedOrigin = isAllowed ? origin : "https://gijswillemsen.nl";
 
   return {
-    "Access-Control-Allow-Origin": allowed,
+    "Access-Control-Allow-Origin": allowedOrigin,
     "Access-Control-Allow-Methods": "GET, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Max-Age": "86400",
@@ -51,9 +50,9 @@ export default {
     // GET /api/site-info — main endpoint
     if (url.pathname === "/api/site-info" && request.method === "GET") {
       // Try to read from KV if the binding is configured
-      if (env.SITE_CONTENT) {
+      if (env.KV) {
         try {
-          const kvData = await env.SITE_CONTENT.get("site-info", "json");
+          const kvData = await env.KV.get("site-info", "json");
 
           if (kvData) {
             return jsonResponse(kvData, request);
