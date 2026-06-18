@@ -127,6 +127,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
   const [cyberHovered, setCyberHovered] = useState(false);
 
   return (
+    <>
     <ScaledCanvas width={CANVAS_WIDTH} height={CANVAS_HEIGHT} background="#181818">
       <div className="bg-[#181818] relative w-full h-full overflow-hidden" data-name="Home page">
         <div className="absolute h-[478.004px] left-0 top-[437.5px] w-[1865px]">
@@ -189,7 +190,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
             </svg>
           </div>
         </div>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[523px] w-[88px]">Country</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[523px] w-[120px]">Country</p>
         <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[600px] whitespace-nowrap">15 years</p>
         <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[584px] w-[88px]">Uptime</p>
         <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[661px] whitespace-nowrap">NL / EN</p>
@@ -277,14 +278,15 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         <div className="absolute left-[17px] size-[41px] top-[1067px]" data-name="wlmsn logo">
           <ImageWithFallback alt="WLMSN logo" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgWlmsnLogo} />
         </div>
-        <button
-          type="button"
-          onClick={handleBrand}
-          className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[19px] not-italic text-[#f2f1f0] text-[20px] top-[874px] whitespace-nowrap cursor-pointer hover:underline focus:outline-none focus-visible:underline"
-        >
-          \\gijs willemsen \\WLMSN \\SABLE
-        </button>
       </div>
     </ScaledCanvas>
+    <button
+      type="button"
+      onClick={handleBrand}
+      className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-60 transition-opacity duration-300 focus:outline-none z-50"
+    >
+      \\gijs willemsen \\WLMSN \\SABLE
+    </button>
+    </>
   );
 }
