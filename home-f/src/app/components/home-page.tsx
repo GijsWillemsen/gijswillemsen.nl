@@ -172,12 +172,12 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
             </svg>
           </div>
         </div>
-        <p className="[word-break:break-word] absolute font-['DotGothic16:Regular',sans-serif] leading-[0] left-[1300px] not-italic text-[0px] text-white top-[539px] whitespace-nowrap">
-          <span className="font-['Silkscreen:Regular',sans-serif] leading-[normal] text-[20px]">Nethe</span>
-          <span className="font-['Silkscreen:Regular',sans-serif] leading-[normal] text-[20px] tracking-[-3px]">rl</span>
-          <span className="font-['Silkscreen:Regular',sans-serif] leading-[normal] text-[20px]">ands</span>
+        <p className="[word-break:break-word] absolute font-['DotGothic16',sans-serif] leading-[0] left-[1300px] not-italic text-[0px] text-white top-[539px] whitespace-nowrap">
+          <span className="font-['Silkscreen',sans-serif] leading-[normal] text-[20px]">Nethe</span>
+          <span className="font-['Silkscreen',sans-serif] leading-[normal] text-[20px] tracking-[-3px]">rl</span>
+          <span className="font-['Silkscreen',sans-serif] leading-[normal] text-[20px]">ands</span>
         </p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen:Regular',sans-serif] h-[122px] leading-[normal] left-[243px] not-italic text-[32px] text-white top-[482px] w-[698px]">
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] h-[122px] leading-[normal] left-[243px] not-italic text-[32px] text-white top-[482px] w-[698px]">
           ICT, Engineering, CS,
           <br aria-hidden />
           Robotics AND
@@ -189,18 +189,18 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
             </svg>
           </div>
         </div>
-        <p className="[word-break:break-word] absolute font-['Silkscreen:Regular',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[523px] w-[88px]">Country</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen:Regular',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[600px] whitespace-nowrap">15 years</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen:Regular',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[584px] w-[88px]">Uptime</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen:Regular',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[661px] whitespace-nowrap">NL / EN</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[523px] w-[88px]">Country</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[600px] whitespace-nowrap">15 years</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[584px] w-[88px]">Uptime</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[661px] whitespace-nowrap">NL / EN</p>
         <a
           href="mailto:mail@gijswillemsen.nl"
-          className="[word-break:break-word] absolute font-['Silkscreen:Regular',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[722px] whitespace-nowrap hover:underline focus:outline-none focus-visible:underline"
+          className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[722px] whitespace-nowrap hover:underline focus:outline-none focus-visible:underline"
         >
           MAIL@GIJSWILLEMSEN.nl
         </a>
-        <p className="[word-break:break-word] absolute font-['Silkscreen:Regular',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[645px] w-[116px]">LANGUAGE</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen:Regular',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[706px] w-[116px]">MAIL</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[645px] w-[116px]">LANGUAGE</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[706px] w-[116px]">MAIL</p>
         <div className="absolute inset-[58.03%_31.1%_39.66%_67.29%]" data-name="Vector">
           <div className="absolute inset-[-5.77%_-5%]">
             <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33 29">
@@ -240,7 +240,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         <button
           type="button"
           onClick={handleResume}
-          className="absolute border-2 border-[#f2f1f0] border-solid h-[53px] left-[1415px] rounded-[15px] top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen:Regular',sans-serif] text-[24px] text-white whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          className="absolute border-2 border-[#f2f1f0] border-solid h-[53px] left-[1415px] rounded-[15px] top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           data-name="Resume button"
         >
           Resume
@@ -248,7 +248,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         <button
           type="button"
           onClick={handleProjects}
-          className="absolute border-2 border-[#f2f1f0] border-solid h-[53px] left-[1620px] rounded-[15px] top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen:Regular',sans-serif] text-[24px] text-white whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          className="absolute border-2 border-[#f2f1f0] border-solid h-[53px] left-[1620px] rounded-[15px] top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           data-name="Projects button"
         >
           Projects
@@ -264,7 +264,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
           <p
             onMouseEnter={() => setCyberHovered(true)}
             onMouseLeave={() => setCyberHovered(false)}
-            className="[word-break:break-word] absolute font-['Silkscreen:Regular',sans-serif] inset-0 leading-[normal] not-italic text-[32px] text-white whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#002BFF]"
+            className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] inset-0 leading-[normal] not-italic text-[32px] text-white whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#002BFF]"
           >
             {cyberHovered ? "Hacking (°  °)" : "CYBERSECURITY"}
           </p>
@@ -280,7 +280,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         <button
           type="button"
           onClick={handleBrand}
-          className="[word-break:break-word] absolute font-['Silkscreen:Regular',sans-serif] leading-[normal] left-[19px] not-italic text-[#f2f1f0] text-[20px] top-[874px] whitespace-nowrap cursor-pointer hover:underline focus:outline-none focus-visible:underline"
+          className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[19px] not-italic text-[#f2f1f0] text-[20px] top-[874px] whitespace-nowrap cursor-pointer hover:underline focus:outline-none focus-visible:underline"
         >
           \\gijs willemsen \\WLMSN \\SABLE
         </button>
