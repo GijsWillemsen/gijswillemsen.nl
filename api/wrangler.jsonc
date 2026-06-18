@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gijswillemsen-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-06-13",
+
+  // KV namespace for site content.
+  // After creating the namespace, fill in the id:
+  //   npx wrangler kv namespace create SITE_CONTENT
+  "kv_namespaces": [
+    {
+      "binding": "SITE_CONTENT",
+      "id": "<YOUR_KV_NAMESPACE_ID>"
+    }
+  ]
+}

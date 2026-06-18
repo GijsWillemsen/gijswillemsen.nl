@@ -5,6 +5,7 @@ import imgWlmsnLogo from "@/imports/home/dd38095cc809e55f1fdd3091393db1050e65d71
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ScaledCanvas } from "./scaled-canvas";
 import { Footer } from "./footer";
+import { useSiteInfo } from "@/hooks/useSiteInfo";
 
 /** Intrinsic design dimensions of the imported Figma frame. */
 const CANVAS_WIDTH = 1865;
@@ -122,8 +123,9 @@ interface HomePageProps {
 }
 
 export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) {
-  const handleResume = onResume ?? (() => { window.location.href = "https://resume.gijswillemsen.nl"; });
-  const handleProjects = onProjects ?? (() => { window.location.href = "https://projects.gijswillemsen.nl"; });
+  const { data: siteInfo } = useSiteInfo();
+  const handleResume = onResume ?? (() => { window.location.href = siteInfo.navigation.resume; });
+  const handleProjects = onProjects ?? (() => { window.location.href = siteInfo.navigation.projects; });
   const handleBrand = onBrandClick ?? (() => window.scrollTo({ top: 0, behavior: "smooth" }));
   const [cyberHovered, setCyberHovered] = useState(false);
 
@@ -174,10 +176,8 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
             </svg>
           </div>
         </div>
-        <p className="[word-break:break-word] absolute font-['DotGothic16',sans-serif] leading-[0] left-[1300px] not-italic text-[0px] text-white top-[539px] whitespace-nowrap">
-          <span className="font-['Silkscreen',sans-serif] leading-[normal] text-[20px]">Nethe</span>
-          <span className="font-['Silkscreen',sans-serif] leading-[normal] text-[20px] tracking-[-3px]">rl</span>
-          <span className="font-['Silkscreen',sans-serif] leading-[normal] text-[20px]">ands</span>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[539px] whitespace-nowrap">
+          {siteInfo.hero.country}
         </p>
         <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] h-[122px] leading-[normal] left-[243px] not-italic text-[32px] text-white top-[482px] w-[698px]">
           ICT, Engineering, CS,
@@ -192,14 +192,14 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
           </div>
         </div>
         <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[523px] w-[120px]">Country</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[600px] whitespace-nowrap">15 years</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[600px] whitespace-nowrap">{siteInfo.hero.uptime}</p>
         <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[584px] w-[88px]">Uptime</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[661px] whitespace-nowrap">NL / EN</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[661px] whitespace-nowrap">{siteInfo.hero.language}</p>
         <a
-          href="mailto:mail@gijswillemsen.nl"
+          href={`mailto:${siteInfo.hero.mail}`}
           className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[722px] whitespace-nowrap hover:underline focus:outline-none focus-visible:underline"
         >
-          MAIL@GIJSWILLEMSEN.nl
+          {siteInfo.hero.mail.toUpperCase()}
         </a>
         <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[645px] w-[116px]">LANGUAGE</p>
         <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[706px] w-[116px]">MAIL</p>

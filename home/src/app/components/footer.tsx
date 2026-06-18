@@ -1,11 +1,14 @@
+import { useSiteInfo } from "@/hooks/useSiteInfo";
+
 interface FooterProps {
   onResume?: () => void;
   onProjects?: () => void;
 }
 
 export function Footer({ onResume, onProjects }: FooterProps) {
-  const handleResume = onResume ?? (() => { window.location.href = "https://resume.gijswillemsen.nl"; });
-  const handleProjects = onProjects ?? (() => { window.location.href = "https://projects.gijswillemsen.nl"; });
+  const { data: siteInfo } = useSiteInfo();
+  const handleResume = onResume ?? (() => { window.location.href = siteInfo.navigation.resume; });
+  const handleProjects = onProjects ?? (() => { window.location.href = siteInfo.navigation.projects; });
 
   return (
     <footer className="w-full bg-[#001166] border-t border-white/10 px-12 py-10 font-['Silkscreen',sans-serif]">
@@ -32,7 +35,7 @@ export function Footer({ onResume, onProjects }: FooterProps) {
           <div className="flex flex-col gap-4">
             <p className="text-[11px] font-bold text-white/40 tracking-widest uppercase">Links</p>
             <a
-              href="https://github.com/GijsWillemsen"
+              href={siteInfo.links.github.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[14px] text-white/80 hover:text-white transition-colors duration-200 w-fit"
@@ -40,7 +43,7 @@ export function Footer({ onResume, onProjects }: FooterProps) {
               Github
             </a>
             <a
-              href="https://makerworld.com/en/@Gijswillemsen"
+              href={siteInfo.links.makerworld.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[14px] text-white/80 hover:text-white transition-colors duration-200 w-fit"
@@ -52,18 +55,18 @@ export function Footer({ onResume, onProjects }: FooterProps) {
           <div className="flex flex-col gap-4">
             <p className="text-[11px] font-bold text-white/40 tracking-widest uppercase">Contact</p>
             <a
-              href="mailto:mail@gijswillemsen.nl"
+              href={`mailto:${siteInfo.contact.email}`}
               className="text-[14px] text-white/80 hover:text-white transition-colors duration-200 w-fit"
             >
-              mail@gijswillemsen.nl
+              {siteInfo.contact.email}
             </a>
           </div>
         </div>
 
         <div className="border-t border-white/10 pt-6 flex flex-col gap-1">
-          <p className="text-[11px] text-white/30">© 2026 Gijs Willemsen</p>
-          <p className="text-[11px] text-white/30">© 2026 WLMSN</p>
-          <p className="text-[11px] text-white/30">© 2026 Sable</p>
+          {siteInfo.copyright.map((line) => (
+            <p key={line} className="text-[11px] text-white/30">{line}</p>
+          ))}
         </div>
       </div>
     </footer>
