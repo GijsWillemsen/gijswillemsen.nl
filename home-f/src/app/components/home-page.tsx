@@ -1,7 +1,7 @@
 import { useState } from "react";
-import svgPaths from "@/imports/HomePage-1/svg-m1o4ua2i7m";
-import imgSableLogo from "@/imports/HomePage-1/34e1a05dacba882243b613622d41219303fb8cb9.png";
-import imgWlmsnLogo from "@/imports/HomePage-1/dd38095cc809e55f1fdd3091393db1050e65d719.png";
+import svgPaths from "@/imports/home/svg-m1o4ua2i7m";
+import imgSableLogo from "@/imports/home/34e1a05dacba882243b613622d41219303fb8cb9.png";
+import imgWlmsnLogo from "@/imports/home/dd38095cc809e55f1fdd3091393db1050e65d719.png";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ScaledCanvas } from "./scaled-canvas";
 import { Footer } from "./footer";
