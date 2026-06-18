@@ -1,1 +1,9 @@
 node_modules/
+home/node_modules/
+projects/node_modules/
+resume/node_modules/
+api/node_modules/
+
+# Wrangler local dev state
+.wrangler/
+api/.wrangler/
