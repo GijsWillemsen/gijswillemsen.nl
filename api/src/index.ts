@@ -72,7 +72,8 @@ export default {
             github_url, github_handle,
             makerworld_url, makerworld_handle,
             copyright_json,
-            nav_resume, nav_projects
+            nav_resume, nav_projects,
+            brand
           ] = await Promise.all([
             env.KV.get("country"),
             env.KV.get("uptime"),
@@ -84,7 +85,8 @@ export default {
             env.KV.get("makerworld_handle"),
             env.KV.get("copyright", "json"),
             env.KV.get("nav_resume"),
-            env.KV.get("nav_projects")
+            env.KV.get("nav_projects"),
+            env.KV.get("brand")
           ]);
 
           // Deep copy defaults so we don't mutate the imported DEFAULT_SITE_INFO object structure directly
@@ -113,6 +115,8 @@ export default {
           if (nav_resume) navigation.resume = nav_resume;
           if (nav_projects) navigation.projects = nav_projects;
           siteInfo.navigation = navigation;
+          
+          if (brand) siteInfo.brand = brand;
           
         } catch (e) {
           console.error("Error reading from KV", e);

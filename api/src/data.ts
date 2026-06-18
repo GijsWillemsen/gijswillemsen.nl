@@ -18,4 +18,5 @@ export interface SiteInfo {
     resume: string;
     projects: string;
   };
+  brand: string;
 }

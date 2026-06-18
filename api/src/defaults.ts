@@ -35,4 +35,5 @@ export const DEFAULT_SITE_INFO: SiteInfo = {
     resume: "https://resume.gijswillemsen.nl",
     projects: "https://projects.gijswillemsen.nl",
   },
+  brand: "\\\\gijs willemsen \\\\WLMSN \\\\SABLE",
 };

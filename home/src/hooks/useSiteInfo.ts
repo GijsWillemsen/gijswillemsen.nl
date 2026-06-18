@@ -34,6 +34,7 @@ const DEFAULTS: SiteInfo = {
     resume: "https://resume.gijswillemsen.nl",
     projects: "https://projects.gijswillemsen.nl",
   },
+  brand: "\\\\gijs willemsen \\\\WLMSN \\\\SABLE",
 };
 
 /** In-memory cache so we don't refetch on every route change. */
