@@ -1,7 +1,7 @@
 import { DEFAULT_SITE_INFO } from "./defaults";
 
 export interface Env {
-  SITE_CONTENT: KVNamespace;
+  SITE_CONTENT?: KVNamespace; // Optional — enable by adding KV binding in wrangler.jsonc
 }
 
 /** Allowed origins for CORS. */
@@ -50,15 +50,17 @@ export default {
 
     // GET /api/site-info — main endpoint
     if (url.pathname === "/api/site-info" && request.method === "GET") {
-      try {
-        // Try to read from KV first
-        const kvData = await env.SITE_CONTENT.get("site-info", "json");
+      // Try to read from KV if the binding is configured
+      if (env.SITE_CONTENT) {
+        try {
+          const kvData = await env.SITE_CONTENT.get("site-info", "json");
 
-        if (kvData) {
-          return jsonResponse(kvData, request);
+          if (kvData) {
+            return jsonResponse(kvData, request);
+          }
+        } catch {
+          // KV read failed — fall through to defaults
         }
-      } catch {
-        // KV read failed — fall through to defaults
       }
 
       // Return hardcoded defaults as fallback
