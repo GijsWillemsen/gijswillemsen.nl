@@ -48,7 +48,7 @@ const API_BASE =
   import.meta.env.VITE_API_URL ??
   (import.meta.env.DEV
     ? "http://localhost:8787"
-    : "https://api.gijswillemsen.nl");
+    : "https://web-api.gijswillemsen.nl");
 
 export function useSiteInfo() {
   const [data, setData] = useState<SiteInfo>(cache ?? DEFAULTS);
