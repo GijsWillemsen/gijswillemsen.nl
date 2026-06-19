@@ -1,0 +1,8 @@
+/* TEAM */
+Developer: Gijs Willemsen
+Site: https://gijswillemsen.nl
+
+/* SITE */
+Last update: 2026/06/19
+Language: English
+Doctype: HTML5

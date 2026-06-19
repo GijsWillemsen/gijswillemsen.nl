@@ -23,3 +23,5 @@ Disallow:
 # Block all other bots and crawlers
 User-agent: *
 Disallow: /
+
+Sitemap: https://gijswillemsen.nl/sitemap.xml

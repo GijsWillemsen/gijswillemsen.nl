@@ -117,7 +117,7 @@ export function ErrorPage({ onHome, code = "404" }: ErrorPageProps) {
           </p>
           <NameHeader />
           <p className="absolute left-0 right-0 top-[35%] text-center font-['Silkscreen',sans-serif] text-[20px] text-white whitespace-nowrap">
-            I see you encountered a error :)
+            I see you encountered an error :)
           </p>
           <button
             type="button"
