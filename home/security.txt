@@ -1,5 +1,5 @@
 # Contact information for security researchers and vulnerability reports
-Contact: mailto:security@gijswillemsen.nl
+Contact: mailto:security.gijswillemsen.nl
 
 # Preferred languages for communication
 Preferred-Languages: en, nl

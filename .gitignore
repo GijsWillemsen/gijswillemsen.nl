@@ -4,6 +4,12 @@ projects/node_modules/
 resume/node_modules/
 api/node_modules/
 
+dist/
+home/dist/
+projects/dist/
+resume/dist/
+api/dist/
+
 # Wrangler local dev state
 .wrangler/
 api/.wrangler/
