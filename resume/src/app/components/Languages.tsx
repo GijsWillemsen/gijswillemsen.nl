@@ -1,38 +1,25 @@
-import svgPaths from "../../imports/Resume/svg-j8xt1btrdk";
 import type { LanguageEntry } from "../lib/content";
 
 const FONT = "'Silkscreen', monospace";
 
-function Star({ filled }: { filled: boolean }) {
+function ProficiencyBar({ speaking, writing }: { speaking: number; writing: number }) {
   return (
-    <svg
-      className="block h-4 w-4"
-      fill="none"
-      preserveAspectRatio="none"
-      viewBox="0 0 20 19"
-    >
-      <path
-        d={svgPaths.p1b500f0}
-        fill={filled ? "white" : "none"}
-        stroke="white"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-      />
-    </svg>
-  );
-}
-
-function StarRating({ label, value }: { label: string; value: number }) {
-  return (
-    <div className="flex items-center gap-3">
-      <p className="text-white" style={{ fontFamily: FONT, fontSize: 14 }}>
-        {label}:
-      </p>
-      <div className="flex gap-1">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} filled={i < value} />
-        ))}
+    <div className="mt-5 flex flex-col gap-2">
+      <div className="flex items-center gap-2">
+        <span className="text-[10px] text-white/50 w-16" style={{ fontFamily: FONT }}>SPEAKING</span>
+        <div className="flex gap-1 flex-1 h-[8px]">
+          {[1, 2, 3, 4, 5].map((level) => (
+            <div key={`s-${level}`} className={`flex-1 ${level <= speaking ? 'bg-[#002BFF]' : 'bg-white/10'}`} />
+          ))}
+        </div>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="text-[10px] text-white/50 w-16" style={{ fontFamily: FONT }}>WRITING</span>
+        <div className="flex gap-1 flex-1 h-[8px]">
+          {[1, 2, 3, 4, 5].map((level) => (
+            <div key={`w-${level}`} className={`flex-1 ${level <= writing ? 'bg-[#002BFF]' : 'bg-white/10'}`} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -40,20 +27,8 @@ function StarRating({ label, value }: { label: string; value: number }) {
 
 function LanguageIcon() {
   return (
-    <div className="h-[110px] w-[110px] shrink-0">
-      <svg
-        className="block size-full"
-        fill="none"
-        preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 152.001 152.001"
-      >
-        <path
-          d={svgPaths.p30385b80}
-          stroke="#002BFF"
-          strokeLinecap="round"
-          strokeWidth={10}
-        />
-      </svg>
+    <div className="h-[60px] w-[60px] shrink-0 bg-[#002BFF] rounded-full flex items-center justify-center">
+      <span className="text-white text-2xl" style={{ fontFamily: FONT }}>A</span>
     </div>
   );
 }
@@ -66,7 +41,7 @@ export function Languages({ items }: { items: LanguageEntry[] }) {
           key={lang.id}
           className="flex items-start justify-between gap-6 rounded-[25px] border border-[#868686] bg-[#181818] p-8"
         >
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <p className="text-white" style={{ fontFamily: FONT, fontSize: 28 }}>
               {lang.name}
             </p>
@@ -76,10 +51,7 @@ export function Languages({ items }: { items: LanguageEntry[] }) {
             >
               {lang.proficiency}
             </p>
-            <div className="mt-5 flex flex-col gap-3">
-              <StarRating label="SPEAKING" value={lang.speaking} />
-              <StarRating label="WRITING" value={lang.writing} />
-            </div>
+            <ProficiencyBar speaking={lang.speaking} writing={lang.writing} />
           </div>
           <LanguageIcon />
         </div>

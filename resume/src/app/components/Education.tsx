@@ -1,24 +1,11 @@
-import svgPaths from "../../imports/Resume/svg-j8xt1btrdk";
 import type { EducationEntry } from "../lib/content";
 
 const FONT = "'Silkscreen', monospace";
 
 function GradCap() {
   return (
-    <div className="h-[80px] w-[120px] shrink-0">
-      <svg
-        className="block size-full"
-        fill="none"
-        preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 152.029 109"
-      >
-        <path
-          d={svgPaths.p34380580}
-          stroke="#002BFF"
-          strokeLinecap="round"
-          strokeWidth={10}
-        />
-      </svg>
+    <div className="h-[60px] w-[60px] shrink-0 bg-[#002BFF] rounded flex items-center justify-center">
+      <span className="text-white text-2xl" style={{ fontFamily: FONT }}>E</span>
     </div>
   );
 }
