@@ -10,6 +10,8 @@ import { useSiteInfo } from "@/hooks/useSiteInfo";
 /** Intrinsic design dimensions of the imported Figma frame. */
 const CANVAS_WIDTH = 1865;
 const CANVAS_HEIGHT = 1127;
+/** Estimated footer height at the design width – used by the footer ScaledCanvas wrapper. */
+const FOOTER_HEIGHT = 260;
 
 function NameHeader() {
   return (
@@ -176,9 +178,6 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
             </svg>
           </div>
         </div>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[539px] whitespace-nowrap">
-          {siteInfo.hero.country}
-        </p>
         <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] h-[122px] leading-[normal] left-[243px] not-italic text-[32px] text-white top-[482px] w-[698px]">
           ICT, Engineering, CS,
           <br aria-hidden />
@@ -191,18 +190,32 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
             </svg>
           </div>
         </div>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[523px] w-[120px]">Country</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[600px] whitespace-nowrap">{siteInfo.hero.uptime}</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[584px] w-[88px]">Uptime</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[661px] whitespace-nowrap">{siteInfo.hero.language}</p>
-        <a
-          href={`mailto:${siteInfo.hero.mail}`}
-          className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[722px] whitespace-nowrap hover:underline focus:outline-none focus-visible:underline"
-        >
-          {siteInfo.hero.mail.toUpperCase()}
-        </a>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[645px] w-[116px]">LANGUAGE</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[706px] w-[116px]">MAIL</p>
+        {/* Right-side info panel — uses flex column so translated labels don't overlap */}
+        <div className="absolute left-[1300px] top-[523px] flex flex-col gap-[8px] font-['Silkscreen',sans-serif]">
+          <div className="flex flex-col">
+            <p className="font-bold text-[16px] text-[#a8a8a8] leading-[normal] whitespace-nowrap">Country</p>
+            <p className="text-[20px] text-white leading-[normal] whitespace-nowrap mt-[2px]">
+              {siteInfo.hero.country}
+            </p>
+          </div>
+          <div className="flex flex-col">
+            <p className="font-bold text-[16px] text-[#a8a8a8] leading-[normal] whitespace-nowrap">Uptime</p>
+            <p className="text-[20px] text-white leading-[normal] whitespace-nowrap mt-[2px]">{siteInfo.hero.uptime}</p>
+          </div>
+          <div className="flex flex-col">
+            <p className="font-bold text-[16px] text-[#a8a8a8] leading-[normal] whitespace-nowrap">LANGUAGE</p>
+            <p className="text-[20px] text-white leading-[normal] whitespace-nowrap mt-[2px]">{siteInfo.hero.language}</p>
+          </div>
+          <div className="flex flex-col">
+            <p className="font-bold text-[16px] text-[#a8a8a8] leading-[normal] whitespace-nowrap">MAIL</p>
+            <a
+              href={`mailto:${siteInfo.hero.mail}`}
+              className="text-[20px] text-white leading-[normal] whitespace-nowrap mt-[2px] hover:underline focus:outline-none focus-visible:underline"
+            >
+              {siteInfo.hero.mail.toUpperCase()}
+            </a>
+          </div>
+        </div>
         <div className="absolute inset-[58.03%_31.1%_39.66%_67.29%]" data-name="Vector">
           <div className="absolute inset-[-5.77%_-5%]">
             <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33 29">
@@ -271,24 +284,27 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
             {cyberHovered ? "Hacking (°  °)" : "CYBERSECURITY"}
           </p>
         </div>
+        {/* Brand text and logos inside the canvas so they scale with it */}
+        <button
+          type="button"
+          onClick={handleBrand}
+          className="absolute font-['Silkscreen',sans-serif] text-[20px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-60 transition-opacity duration-300 focus:outline-none left-[19px] top-[874px]"
+        >
+          {siteInfo.brand}
+        </button>
+        <div className="absolute left-[17px] size-[41px] top-[1067px] opacity-30 hover:opacity-60 transition-opacity duration-300" data-name="wlmsn logo">
+          <ImageWithFallback alt="WLMSN logo" className="absolute inset-0 max-w-none object-cover size-full" src={imgWlmsnLogo} />
+        </div>
+        <div className="absolute left-[82px] size-[47px] top-[1065px] opacity-30 hover:opacity-60 transition-opacity duration-300" data-name="sable logo">
+          <ImageWithFallback alt="SABLE logo" className="absolute h-[160.47%] left-[-87.58%] max-w-none top-[-36.1%] w-[285.27%]" src={imgSableLogo} />
+        </div>
       </div>
     </ScaledCanvas>
-    <div className="fixed bottom-4 right-4 flex items-center gap-2 opacity-30 hover:opacity-60 transition-opacity duration-300 z-50">
-      <div className="relative size-[41px] overflow-hidden">
-        <ImageWithFallback alt="WLMSN logo" className="absolute inset-0 max-w-none object-cover size-full" src={imgWlmsnLogo} />
+    <ScaledCanvas width={CANVAS_WIDTH} height={FOOTER_HEIGHT} background="#001166">
+      <div style={{ width: CANVAS_WIDTH, height: FOOTER_HEIGHT }} className="relative">
+        <Footer onResume={onResume} onProjects={onProjects} />
       </div>
-      <div className="relative size-[47px] overflow-hidden">
-        <ImageWithFallback alt="SABLE logo" className="absolute h-[160.47%] left-[-87.58%] max-w-none top-[-36.1%] w-[285.27%]" src={imgSableLogo} />
-      </div>
-    </div>
-    <Footer onResume={onResume} onProjects={onProjects} />
-    <button
-      type="button"
-      onClick={handleBrand}
-      className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-60 transition-opacity duration-300 focus:outline-none z-50"
-    >
-      {siteInfo.brand}
-    </button>
+    </ScaledCanvas>
     </>
   );
 }
