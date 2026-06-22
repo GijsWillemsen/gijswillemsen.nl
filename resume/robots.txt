@@ -24,4 +24,4 @@ Disallow:
 User-agent: *
 Disallow: /
 
-Sitemap: https://resume.gijswillemsen.nl/sitemap.xml
+Sitemap: https://resume.gijswillemsen.nl/sitemap.xml #test
