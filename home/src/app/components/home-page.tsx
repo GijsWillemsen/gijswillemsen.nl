@@ -169,79 +169,45 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
           </svg>
         </div>
         <Header />
-
-        {/* === ICT text block + Cybersecurity (bound together so translations don't cause clipping) === */}
-        <div className="absolute left-[243px] top-[482px] font-['Silkscreen',sans-serif] text-[32px] text-white leading-[normal] not-italic" data-name="ict-cyber-block">
-          <p className="[word-break:break-word] whitespace-pre-wrap">
-            ICT, Engineering, CS,
-            <br aria-hidden />
-            Robotics AND
-          </p>
-          <p
-            onMouseEnter={() => setCyberHovered(true)}
-            onMouseLeave={() => setCyberHovered(false)}
-            className="[word-break:break-word] leading-[normal] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#002BFF] mt-[-3px]"
-            data-name="Component 2"
-          >
-            {cyberHovered ? "Hacking (°  °)" : "CYBERSECURITY"}
-          </p>
+        <div className="absolute inset-[46.94%_31.1%_50.4%_67.29%]" data-name="Vector">
+          <div className="absolute inset-[-5%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33 33">
+              <path d={svgPaths.pcbb300} id="Vector" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+            </svg>
+          </div>
         </div>
-        {/* === Right-side info panel (flow layout to handle translations) === */}
-        <div className="absolute left-[1255px] top-[523px] flex flex-col gap-[21px] font-['Silkscreen',sans-serif]" data-name="info-panel">
-          {/* Country */}
-          <div className="flex flex-row items-start gap-[12px]">
-            <div className="w-[30px] h-[30px] flex-shrink-0 mt-[1px]" data-name="Vector">
-              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33 33">
-                <path d={svgPaths.pcbb300} id="Vector" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <p className="[word-break:break-word] font-bold leading-[normal] not-italic text-[#a8a8a8] text-[16px] whitespace-nowrap">Country</p>
-              <p className="[word-break:break-word] leading-[normal] not-italic text-[20px] text-white whitespace-nowrap">
-                {siteInfo.hero.country}
-              </p>
-            </div>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[539px] whitespace-nowrap">
+          {siteInfo.hero.country}
+        </p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] h-[122px] leading-[normal] left-[243px] not-italic text-[32px] text-white top-[482px] w-[698px]">
+          ICT, Engineering, CS,
+          <br aria-hidden />
+          Robotics AND
+        </p>
+        <div className="absolute inset-[52.35%_31.1%_44.99%_67.29%]" data-name="Vector">
+          <div className="absolute inset-[-5%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33 33">
+              <path d={svgPaths.p34e51100} id="Vector" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+            </svg>
           </div>
-          {/* Uptime */}
-          <div className="flex flex-row items-start gap-[12px]">
-            <div className="w-[30px] h-[30px] flex-shrink-0 mt-[1px]" data-name="Vector">
-              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33 33">
-                <path d={svgPaths.p34e51100} id="Vector" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <p className="[word-break:break-word] font-bold leading-[normal] not-italic text-[#a8a8a8] text-[16px] whitespace-nowrap">Uptime</p>
-              <p className="[word-break:break-word] leading-[normal] not-italic text-[20px] text-white whitespace-nowrap">{siteInfo.hero.uptime}</p>
-            </div>
-          </div>
-          {/* Language */}
-          <div className="flex flex-row items-start gap-[12px]">
-            <div className="w-[30px] h-[26px] flex-shrink-0 mt-[1px]" data-name="Vector">
-              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33 29">
-                <path d={svgPaths.p1ff0f200} id="Vector" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <p className="[word-break:break-word] font-bold leading-[normal] not-italic text-[#a8a8a8] text-[16px] whitespace-nowrap">LANGUAGE</p>
-              <p className="[word-break:break-word] leading-[normal] not-italic text-[20px] text-white whitespace-nowrap">{siteInfo.hero.language}</p>
-            </div>
-          </div>
-          {/* Mail */}
-          <div className="flex flex-row items-start gap-[12px]">
-            <div className="w-[30px] h-[30px] flex-shrink-0 mt-[1px]" data-name="Vector">
-              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33 33">
-                <path d={svgPaths.p2b8942c0} id="Vector" stroke="var(--stroke-0, #F2F1F0)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <p className="[word-break:break-word] font-bold leading-[normal] not-italic text-[#a8a8a8] text-[16px] whitespace-nowrap">MAIL</p>
-              <a
-                href={`mailto:${siteInfo.hero.mail}`}
-                className="[word-break:break-word] leading-[normal] not-italic text-[20px] text-white whitespace-nowrap hover:underline focus:outline-none focus-visible:underline"
-              >
-                {siteInfo.hero.mail.toUpperCase()}
-              </a>
-            </div>
+        </div>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[523px] w-[120px]">Country</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[600px] whitespace-nowrap">{siteInfo.hero.uptime}</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[584px] w-[88px]">Uptime</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[661px] whitespace-nowrap">{siteInfo.hero.language}</p>
+        <a
+          href={`mailto:${siteInfo.hero.mail}`}
+          className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[722px] whitespace-nowrap hover:underline focus:outline-none focus-visible:underline"
+        >
+          {siteInfo.hero.mail.toUpperCase()}
+        </a>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[645px] w-[116px]">LANGUAGE</p>
+        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[706px] w-[116px]">MAIL</p>
+        <div className="absolute inset-[58.03%_31.1%_39.66%_67.29%]" data-name="Vector">
+          <div className="absolute inset-[-5.77%_-5%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33 29">
+              <path d={svgPaths.p1ff0f200} id="Vector" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+            </svg>
           </div>
         </div>
         <div className="-translate-y-1/2 absolute flex h-[461.595px] items-center justify-center left-[1173px] top-[calc(50%-572.7px)] w-[891.477px]">
@@ -289,6 +255,22 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         >
           Projects
         </button>
+        <div className="-translate-y-1/2 absolute aspect-[20.000011444091797/20.000009536743164] left-[67.29%] right-[31.1%] top-[calc(50%+164.5px)]" data-name="Vector">
+          <div className="absolute inset-[-5%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33 33">
+              <path d={svgPaths.p2b8942c0} id="Vector" stroke="var(--stroke-0, #F2F1F0)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+            </svg>
+          </div>
+        </div>
+        <div className="absolute h-[41px] left-[527px] top-[523px] w-[296px]" data-name="Component 2">
+          <p
+            onMouseEnter={() => setCyberHovered(true)}
+            onMouseLeave={() => setCyberHovered(false)}
+            className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] inset-0 leading-[normal] not-italic text-[32px] text-white whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#002BFF]"
+          >
+            {cyberHovered ? "Hacking (°  °)" : "CYBERSECURITY"}
+          </p>
+        </div>
       </div>
     </ScaledCanvas>
     <div className="fixed bottom-4 right-4 flex items-center gap-2 opacity-30 hover:opacity-60 transition-opacity duration-300 z-50">

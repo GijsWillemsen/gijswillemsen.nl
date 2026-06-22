@@ -11,8 +11,7 @@ export function Footer({ onResume, onProjects }: FooterProps) {
   const handleProjects = onProjects ?? (() => { window.location.href = siteInfo.navigation.projects; });
 
   return (
-    <footer className="w-full bg-[#001166] border-t border-white/10 font-['Silkscreen',sans-serif] overflow-hidden">
-      <div className="min-w-[1865px] px-12 py-10">
+    <footer className="w-full bg-[#001166] border-t border-white/10 px-12 py-10 font-['Silkscreen',sans-serif]">
       <div className="max-w-[1400px] mx-auto flex flex-col gap-10">
         <div className="grid grid-cols-3 gap-8">
           <div className="flex flex-col gap-4">
@@ -69,7 +68,6 @@ export function Footer({ onResume, onProjects }: FooterProps) {
             <p key={line} className="text-[11px] text-white/30">{line}</p>
           ))}
         </div>
-      </div>
       </div>
     </footer>
   );
