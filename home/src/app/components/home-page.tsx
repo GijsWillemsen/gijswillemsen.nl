@@ -10,6 +10,7 @@ import { useSiteInfo } from "@/hooks/useSiteInfo";
 /** Intrinsic design dimensions of the imported Figma frame. */
 const CANVAS_WIDTH = 1865;
 const CANVAS_HEIGHT = 1127;
+const FOOTER_DESIGN_HEIGHT = 280;
 
 function NameHeader() {
   return (
@@ -298,7 +299,11 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         <ImageWithFallback alt="SABLE logo" className="absolute h-[160.47%] left-[-87.58%] max-w-none top-[-36.1%] w-[285.27%]" src={imgSableLogo} />
       </div>
     </div>
-    <Footer onResume={onResume} onProjects={onProjects} />
+    <ScaledCanvas width={CANVAS_WIDTH} height={FOOTER_DESIGN_HEIGHT} background="#001166">
+      <div className="w-full h-full">
+        <Footer onResume={onResume} onProjects={onProjects} />
+      </div>
+    </ScaledCanvas>
     <button
       type="button"
       onClick={handleBrand}
