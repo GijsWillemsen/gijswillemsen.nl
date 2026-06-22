@@ -176,14 +176,24 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
             </svg>
           </div>
         </div>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[539px] whitespace-nowrap">
-          {siteInfo.hero.country}
-        </p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] h-[122px] leading-[normal] left-[243px] not-italic text-[32px] text-white top-[482px] w-[698px]">
-          ICT, Engineering, CS,
-          <br aria-hidden />
-          Robotics AND
-        </p>
+        {/* Left-side text block: "ICT, Engineering, CS, Robotics AND CYBERSECURITY" */}
+        <div className="absolute left-[243px] top-[482px] flex flex-col font-['Silkscreen',sans-serif] text-[32px] text-white leading-[normal] not-italic" data-name="hero-text-block">
+          <p className="[word-break:break-word] whitespace-nowrap">
+            ICT, Engineering, CS,
+          </p>
+          <p className="[word-break:break-word] whitespace-nowrap">
+            Robotics AND
+          </p>
+          <p
+            onMouseEnter={() => setCyberHovered(true)}
+            onMouseLeave={() => setCyberHovered(false)}
+            className="[word-break:break-word] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#002BFF] mt-[9px]"
+            data-name="Component 2"
+          >
+            {cyberHovered ? "Hacking (°  °)" : "CYBERSECURITY"}
+          </p>
+        </div>
+        {/* Decorative vectors */}
         <div className="absolute inset-[52.35%_31.1%_44.99%_67.29%]" data-name="Vector">
           <div className="absolute inset-[-5%]">
             <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33 33">
@@ -191,18 +201,34 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
             </svg>
           </div>
         </div>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[523px] w-[120px]">Country</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[600px] whitespace-nowrap">{siteInfo.hero.uptime}</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[584px] w-[88px]">Uptime</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[661px] whitespace-nowrap">{siteInfo.hero.language}</p>
-        <a
-          href={`mailto:${siteInfo.hero.mail}`}
-          className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] leading-[normal] left-[1300px] not-italic text-[20px] text-white top-[722px] whitespace-nowrap hover:underline focus:outline-none focus-visible:underline"
-        >
-          {siteInfo.hero.mail.toUpperCase()}
-        </a>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[645px] w-[116px]">LANGUAGE</p>
-        <p className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] font-bold h-[18px] leading-[normal] left-[1300px] not-italic text-[#a8a8a8] text-[16px] top-[706px] w-[116px]">MAIL</p>
+        {/* Right-side stats: flow-based layout to prevent clipping on translation */}
+        <div className="absolute left-[1300px] top-[523px] flex flex-col gap-[5px] font-['Silkscreen',sans-serif] not-italic leading-[normal]" data-name="hero-stats">
+          {/* Country */}
+          <div className="flex flex-col">
+            <p className="[word-break:break-word] font-bold text-[#a8a8a8] text-[16px] whitespace-nowrap">Country</p>
+            <p className="[word-break:break-word] text-[20px] text-white whitespace-nowrap">{siteInfo.hero.country}</p>
+          </div>
+          {/* Uptime */}
+          <div className="flex flex-col">
+            <p className="[word-break:break-word] font-bold text-[#a8a8a8] text-[16px] whitespace-nowrap">Uptime</p>
+            <p className="[word-break:break-word] text-[20px] text-white whitespace-nowrap">{siteInfo.hero.uptime}</p>
+          </div>
+          {/* Language */}
+          <div className="flex flex-col">
+            <p className="[word-break:break-word] font-bold text-[#a8a8a8] text-[16px] whitespace-nowrap">LANGUAGE</p>
+            <p className="[word-break:break-word] text-[20px] text-white whitespace-nowrap">{siteInfo.hero.language}</p>
+          </div>
+          {/* Mail */}
+          <div className="flex flex-col">
+            <p className="[word-break:break-word] font-bold text-[#a8a8a8] text-[16px] whitespace-nowrap">MAIL</p>
+            <a
+              href={`mailto:${siteInfo.hero.mail}`}
+              className="[word-break:break-word] text-[20px] text-white whitespace-nowrap hover:underline focus:outline-none focus-visible:underline"
+            >
+              {siteInfo.hero.mail.toUpperCase()}
+            </a>
+          </div>
+        </div>
         <div className="absolute inset-[58.03%_31.1%_39.66%_67.29%]" data-name="Vector">
           <div className="absolute inset-[-5.77%_-5%]">
             <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 33 29">
@@ -261,15 +287,6 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
               <path d={svgPaths.p2b8942c0} id="Vector" stroke="var(--stroke-0, #F2F1F0)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
             </svg>
           </div>
-        </div>
-        <div className="absolute h-[41px] left-[527px] top-[523px] w-[296px]" data-name="Component 2">
-          <p
-            onMouseEnter={() => setCyberHovered(true)}
-            onMouseLeave={() => setCyberHovered(false)}
-            className="[word-break:break-word] absolute font-['Silkscreen',sans-serif] inset-0 leading-[normal] not-italic text-[32px] text-white whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#002BFF]"
-          >
-            {cyberHovered ? "Hacking (°  °)" : "CYBERSECURITY"}
-          </p>
         </div>
       </div>
     </ScaledCanvas>
