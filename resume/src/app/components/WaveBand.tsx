@@ -1,49 +1,26 @@
-import svgPaths from "../../imports/Resume/svg-j8xt1btrdk";
-
-/**
- * Layered blue wave graphic. The three layers are stacked so all three are
- * visible: darkest navy at the back, mid-blue in the middle, bright blue on top.
- * Each layer is absolutely positioned and offset so the darker ones peek out
- * from behind the bright blue rather than hiding beneath it.
- */
 export function WaveBand() {
   return (
     <div className="relative w-full overflow-hidden" style={{ height: 420 }}>
-      {/* layer 1 — darkest navy, tallest, sits furthest back */}
-      <div className="absolute inset-x-0 bottom-0" style={{ height: 420 }}>
-        <svg
-          className="absolute inset-0 block size-full"
-          fill="none"
-          preserveAspectRatio="xMidYMax slice"
-          viewBox="0 0 1903.01 487.742"
-        >
-          <path d={svgPaths.p12cea170} fill="#000C46" />
-        </svg>
-      </div>
-
-      {/* layer 2 — mid blue, offset upward so it shows above the bright blue */}
-      <div className="absolute inset-x-0" style={{ top: 0, height: 360 }}>
-        <svg
-          className="absolute inset-0 block size-full"
-          fill="none"
-          preserveAspectRatio="xMidYMax slice"
-          viewBox="0 0 1903.01 401.009"
-        >
-          <path d={svgPaths.p34a81600} fill="#001788" />
-        </svg>
-      </div>
-
-      {/* layer 3 — bright blue, sits at the bottom */}
-      <div className="absolute inset-x-0 bottom-0" style={{ height: 300 }}>
-        <svg
-          className="absolute inset-0 block size-full"
-          fill="none"
-          preserveAspectRatio="xMidYMax slice"
-          viewBox="0 0 1903.01 505.264"
-        >
-          <path d={svgPaths.p24813f00} fill="#002BFF" />
-        </svg>
-      </div>
+      <svg
+        className="absolute inset-x-0 bottom-0 block size-full"
+        fill="none"
+        preserveAspectRatio="xMidYMax slice"
+        viewBox="0 0 1910 829"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M527.394 227.547C327.29 263.186 7 252.036 7 252.036V487.742L1910.01 483.66V0.00420151C1910.01 0.00420151 1692.17 -0.48818 1553.39 9.18761C1328.15 24.8911 1201.05 56.2815 980.953 106.633C800.557 147.903 709.584 195.098 527.394 227.547Z"
+          fill="#000C46"
+        />
+        <path
+          d="M660.186 401.524C409.492 459.984 217.001 401.438 0 401.438V576.009H1903.01V175C1903.01 175 1689.3 214.917 1551.49 232.141C1342.42 258.271 1128.2 224.659 1013.24 268.875C898.274 313.091 803.624 368.076 660.186 401.524Z"
+          fill="#001788"
+        />
+        <path
+          d="M403.56 525.878C239.279 480.472 0 489.657 0 489.657V828.927H1903.01V328.439C1903.01 328.439 1534.17 307 1313.74 354.968C1149.48 390.713 1083.14 469.766 918.342 502.92C721.061 542.61 597.522 579.488 403.56 525.878Z"
+          fill="#002BFF"
+        />
+      </svg>
     </div>
   );
 }
