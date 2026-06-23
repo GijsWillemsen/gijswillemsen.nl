@@ -11,9 +11,16 @@
       
       <script>
         (function() {
-          const originalTitle = document.title;
+          let originalTitle = document.title;
+          let isAnimating = false;
           let activeTimer, activeStopTimer, activeAnimationInterval;
           let inactiveInterval, inactiveTimeout;
+
+          setInterval(() => {
+            if (!isAnimating && !document.title.includes('‿')) {
+              originalTitle = document.title;
+            }
+          }, 500);
 
           function clearAll() {
             clearTimeout(activeTimer);
@@ -21,12 +28,16 @@
             clearTimeout(inactiveTimeout);
             clearInterval(activeAnimationInterval);
             clearInterval(inactiveInterval);
-            document.title = originalTitle;
+            if (isAnimating) {
+              isAnimating = false;
+              document.title = originalTitle;
+            }
           }
 
           function startActive() {
             clearAll();
             activeTimer = setTimeout(() => {
+              isAnimating = true;
               let state = 0;
               document.title = '( ◕‿◕)';
               activeAnimationInterval = setInterval(() => {
@@ -36,6 +47,7 @@
 
               activeStopTimer = setTimeout(() => {
                 clearInterval(activeAnimationInterval);
+                isAnimating = false;
                 if (!document.hidden) document.title = originalTitle;
               }, 30000);
             }, 30000);
@@ -43,6 +55,7 @@
 
           function startInactive() {
             clearAll();
+            isAnimating = true;
             function cycle() {
               document.title = '(⇀‿‿↼) Zzz!';
               inactiveTimeout = setTimeout(() => {
