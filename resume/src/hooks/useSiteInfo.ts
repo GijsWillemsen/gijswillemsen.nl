@@ -33,6 +33,7 @@ const DEFAULTS: SiteInfo = {
   navigation: {
     resume: "https://resume.gijswillemsen.nl",
     projects: "https://projects.gijswillemsen.nl",
+    home: "https://gijswillemsen.nl",
   },
   brand: "\\\\gijs willemsen \\\\WLMSN \\\\SABLE",
 };
