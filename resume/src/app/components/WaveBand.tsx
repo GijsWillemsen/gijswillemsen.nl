@@ -4,7 +4,7 @@ export function WaveBand() {
       <svg
         className="absolute inset-x-0 bottom-0 block size-full"
         fill="none"
-        preserveAspectRatio="xMidYMax slice"
+        preserveAspectRatio="xMidYMin slice"
         viewBox="0 0 1910 829"
         xmlns="http://www.w3.org/2000/svg"
       >
