@@ -76,7 +76,7 @@ export function ResumePage() {
       </div>
 
       <WaveBand />
-      <SiteFooter footer={content.footer} />
+      <SiteFooter />
     </div>
   );
 }

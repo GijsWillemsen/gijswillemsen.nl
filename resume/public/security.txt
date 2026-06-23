@@ -1,8 +1,0 @@
-# Contact information for security researchers and vulnerability reports
-Contact: mailto:security.gijswillemsen.nl
-
-# Preferred languages for communication
-Preferred-Languages: en, nl
-
-# This file expires on June 18, 2027
-Expires: 2027-06-18T14:00:00.000Z

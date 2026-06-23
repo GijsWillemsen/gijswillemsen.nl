@@ -1,4 +1,14 @@
 import { DEFAULT_SITE_INFO } from "./defaults";
+import {
+  DEFAULT_RESUME_CONTENT,
+  type ResumeContent,
+  type ResumeJob,
+  type ResumeCertificate,
+  type ResumeEducation,
+  type ResumeLanguage,
+  type ResumeCaseStudy,
+  type ResumeSkillGroup,
+} from "./resume-defaults";
 
 export interface Env {
   KV?: KVNamespace;
@@ -33,6 +43,44 @@ function jsonResponse(body: unknown, request: Request, status = 200): Response {
       ...corsHeaders(request),
     },
   });
+}
+
+/**
+ * Extract the numeric suffix from a key name (e.g., "job12" → 12).
+ * Returns Infinity for keys without a numeric suffix so they sort last.
+ */
+function numericSuffix(key: string): number {
+  const match = key.match(/(\d+)$/);
+  return match ? parseInt(match[1], 10) : Infinity;
+}
+
+/**
+ * Given a KV namespace and a prefix, list all keys matching `prefix\d+`,
+ * fetch their JSON values in parallel, and return them sorted by numeric suffix.
+ * Each item gets an `id` field set to its key name.
+ */
+async function fetchPrefixedItems<T>(
+  kv: KVNamespace,
+  prefix: string,
+): Promise<(T & { id: string })[]> {
+  const listed = await kv.list({ prefix });
+  // Filter to only keys matching the exact pattern: prefix followed by digits
+  const pattern = new RegExp(`^${prefix}\\d+$`);
+  const matchedKeys = listed.keys
+    .filter((k) => pattern.test(k.name))
+    .sort((a, b) => numericSuffix(a.name) - numericSuffix(b.name));
+
+  if (matchedKeys.length === 0) return [];
+
+  const values = await Promise.all(
+    matchedKeys.map(async (k) => {
+      const val = await kv.get<T>(k.name, "json");
+      return val ? { ...val, id: k.name } : null;
+    }),
+  );
+
+  // Filter out nulls (keys that didn't parse correctly)
+  return values.filter((v) => v !== null) as (T & { id: string })[];
 }
 
 export default {
@@ -127,9 +175,51 @@ export default {
       return jsonResponse(siteInfo, request);
     }
 
+    // GET /api/resume-content — resume page content
+    if (url.pathname === "/api/resume-content" && request.method === "GET") {
+      // SECURITY: Block direct browser access or unauthorized sites
+      if (!isAllowed) {
+        return new Response("Forbidden: Invalid Origin", { status: 403 });
+      }
+
+      // Start with defaults
+      const content: ResumeContent = { ...DEFAULT_RESUME_CONTENT };
+
+      // Try to read from KV if the binding is configured
+      if (env.KV) {
+        try {
+          // Fetch all sections in parallel
+          const [jobs, certificates, education, languages, caseStudies, skillGroups, heroSubtitle] =
+            await Promise.all([
+              fetchPrefixedItems<ResumeJob>(env.KV, "job"),
+              fetchPrefixedItems<ResumeCertificate>(env.KV, "cert"),
+              fetchPrefixedItems<ResumeEducation>(env.KV, "edu"),
+              fetchPrefixedItems<ResumeLanguage>(env.KV, "lang"),
+              fetchPrefixedItems<ResumeCaseStudy>(env.KV, "case"),
+              fetchPrefixedItems<ResumeSkillGroup>(env.KV, "skill"),
+              env.KV.get("hero_subtitle"),
+            ]);
+
+          // Override sections only if KV had entries for them
+          if (jobs.length > 0) content.jobs = jobs;
+          if (certificates.length > 0) content.certificates = certificates;
+          if (education.length > 0) content.education = education;
+          if (languages.length > 0) content.languages = languages;
+          if (caseStudies.length > 0) content.caseStudies = caseStudies;
+          if (skillGroups.length > 0) content.skillGroups = skillGroups;
+          if (heroSubtitle) content.heroSubtitle = heroSubtitle;
+        } catch (e) {
+          console.error("Error reading resume content from KV", e);
+          // KV read failed — fall through to defaults
+        }
+      }
+
+      return jsonResponse(content, request);
+    }
+
     // 404 for everything else
     return jsonResponse(
-      { error: "Not found", availableEndpoints: ["/api/site-info"] },
+      { error: "Not found", availableEndpoints: ["/api/site-info", "/api/resume-content"] },
       request,
       404
     );

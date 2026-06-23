@@ -1,82 +1,57 @@
-// ---------------------------------------------------------------------------
-// Content model for the résumé homepage.
-//
-// All copy on the page is driven by this data structure so the content can be
-// edited remotely. The backend is a Cloudflare Worker that reads individual
-// KV keys (job1, cert1, edu1, lang1, case1, skill1, hero_subtitle, etc.)
-// and assembles them into this JSON shape via `GET /api/resume-content`.
-// The frontend fetches that endpoint at runtime (see `fetchContent`) and
-// falls back to the bundled `defaultContent` below if the Worker is
-// unavailable (e.g. local dev without the Worker running).
-// ---------------------------------------------------------------------------
+/**
+ * Default resume content — used as fallback when KV has no resume entries yet.
+ * Once you add keys like `job1`, `cert1`, etc. to KV, those will override
+ * the corresponding sections below.
+ */
 
-export interface NavLink {
-  label: string;
-  href: string;
-}
-
-export interface Job {
-  id: string;
+export interface ResumeJob {
   title: string;
   company: string;
   period: string;
   description: string;
 }
 
-export interface Certificate {
-  id: string;
+export interface ResumeCertificate {
   title: string;
   embedHtml?: string;
 }
 
-export interface EducationEntry {
-  id: string;
+export interface ResumeEducation {
   title: string;
   subtitle: string;
   details: { label: string; value: string }[];
 }
 
-export interface LanguageEntry {
-  id: string;
+export interface ResumeLanguage {
   name: string;
   proficiency: string;
   speaking: number;
   writing: number;
 }
 
-export interface CaseStudy {
-  id: string;
+export interface ResumeCaseStudy {
   title: string;
   description: string;
   tags: string[];
   status?: string;
 }
 
-export interface SkillGroup {
-  id: string;
+export interface ResumeSkillGroup {
   category: string;
   skills: string[];
 }
 
 export interface ResumeContent {
-  wordmark: string;
   heroSubtitle: string;
-  jobs: Job[];
-  certificates: Certificate[];
-  education: EducationEntry[];
-  languages: LanguageEntry[];
-  caseStudies: CaseStudy[];
-  skillGroups: SkillGroup[];
-  footer: {
-    pages: NavLink[];
-    links: NavLink[];
-    email: string;
-    copyright: string[];
-  };
+  jobs: (ResumeJob & { id: string })[];
+  certificates: (ResumeCertificate & { id: string })[];
+  education: (ResumeEducation & { id: string })[];
+  languages: (ResumeLanguage & { id: string })[];
+  caseStudies: (ResumeCaseStudy & { id: string })[];
+  skillGroups: (ResumeSkillGroup & { id: string })[];
 }
 
-export const defaultContent: ResumeContent = {
-  wordmark: "RESUME",
+export const DEFAULT_RESUME_CONTENT: ResumeContent = {
   heroSubtitle:
     "Self-taught IT enthusiast building self-hosted infrastructure and full-stack applications.",
   jobs: [
@@ -173,46 +148,4 @@ export const defaultContent: ResumeContent = {
       skills: ["Android App Development"],
     },
   ],
-  footer: {
-    pages: [
-      { label: "Projects", href: "https://projects.gijswillemsen.nl/" },
-      { label: "Resume", href: "https://resume.gijswillemsen.nl/" },
-    ],
-    links: [
-      { label: "Github", href: "https://github.com/GijsWillemsen" },
-      { label: "Makerworld", href: "https://makerworld.com/en/@Gijswillemsen" },
-    ],
-    email: "mail@gijswillemsen.nl",
-    copyright: ["© 2026 Gijs Willemsen", "© 2026 WLMSN", "© 2026 Sable"],
-  },
 };
-
-/**
- * The API base URL.
- * In production this points to the Cloudflare Worker.
- * During local dev, the Worker runs on port 8787.
- */
-const API_BASE =
-  import.meta.env.VITE_API_URL ??
-  (import.meta.env.DEV
-    ? "http://localhost:8787"
-    : "https://web-api.gijswillemsen.nl");
-
-export async function fetchContent(): Promise<ResumeContent> {
-  try {
-    const res = await fetch(`${API_BASE}/api/resume-content`, {
-      headers: { Accept: "application/json" },
-    });
-    if (!res.ok) throw new Error(`Content request failed: ${res.status}`);
-    const data = (await res.json()) as Partial<ResumeContent>;
-    return {
-      ...defaultContent,
-      ...data,
-      footer: { ...defaultContent.footer, ...(data.footer ?? {}) },
-    };
-  } catch {
-    return defaultContent;
-  }
-}
-
-

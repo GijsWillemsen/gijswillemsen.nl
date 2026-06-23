@@ -1,8 +1,0 @@
-/* TEAM */
-Developer: Gijs Willemsen
-Site: https://resume.gijswillemsen.nl
-
-/* SITE */
-Last update: 2026/06/19
-Language: English
-Doctype: HTML5
