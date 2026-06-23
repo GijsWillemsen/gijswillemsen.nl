@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { MobileHomePage } from "./mobile-home-page";
+import { useState } from "react";
 import svgPaths from "@/imports/home/svg-m1o4ua2i7m";
 import imgSableLogo from "@/imports/home/34e1a05dacba882243b613622d41219303fb8cb9.png";
 import imgWlmsnLogo from "@/imports/home/dd38095cc809e55f1fdd3091393db1050e65d719.png";
@@ -123,30 +122,12 @@ interface HomePageProps {
   onBrandClick?: () => void;
 }
 
-function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" ? window.innerWidth < breakpoint : false,
-  );
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < breakpoint);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, [breakpoint]);
-  return isMobile;
-}
-
 export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) {
-  const isMobile = useIsMobile();
   const { data: siteInfo } = useSiteInfo();
   const handleResume = onResume ?? (() => { window.location.href = siteInfo.navigation.resume; });
   const handleProjects = onProjects ?? (() => { window.location.href = siteInfo.navigation.projects; });
   const handleBrand = onBrandClick ?? (() => window.scrollTo({ top: 0, behavior: "smooth" }));
   const [cyberHovered, setCyberHovered] = useState(false);
-
-  if (isMobile) {
-    return <MobileHomePage onResume={onResume} onProjects={onProjects} onBrandClick={onBrandClick} />;
-  }
 
   return (
     <>

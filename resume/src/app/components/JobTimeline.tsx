@@ -75,42 +75,37 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
       {rows.map((row, r) => {
         const reverse = r % 2 === 1; // snake: odd rows run right-to-left
         const isLastRow = r === rows.length - 1;
-        // Pad incomplete rows so card widths stay consistent across rows.
-        const pad = cols - row.length;
+        const padCount = cols - row.length;
+        
+        const paddedRow = [...row, ...Array(padCount).fill(null)];
+        const visualRow = reverse ? [...paddedRow].reverse() : paddedRow;
 
         return (
           <div key={r}>
-            <div className={`flex ${reverse ? "flex-row-reverse" : ""}`}>
-              {row.map((item, i) => (
-                <div 
-                  key={i} 
-                  className={`flex flex-1 ${reverse ? "flex-row-reverse" : ""}`}
-                >
-                  <div className="flex-1">
-                    {item.kind === "job" ? (
-                      <JobCard job={item.job} />
+            <div className="flex">
+              {visualRow.map((item, i) => {
+                const hasNext = !!visualRow[i + 1];
+                return (
+                  <div key={i} className="flex flex-1">
+                    <div className="flex-1">
+                      {item ? (
+                        item.kind === "job" ? (
+                          <JobCard job={item.job} />
+                        ) : (
+                          <GhostCard />
+                        )
+                      ) : null}
+                    </div>
+                    {/* Real connector if there's an item AND a next item.
+                        Otherwise a spacer to ensure identical widths across all columns. */}
+                    {item && hasNext ? (
+                      <HConnector />
                     ) : (
-                      <GhostCard />
+                      <div className="w-7 shrink-0 sm:w-14" />
                     )}
                   </div>
-                  {/* Real connector between items, invisible spacer at the end of the row
-                      so all cards maintain the exact same flex-1 width without elongation */}
-                  {i < row.length - 1 ? (
-                    <HConnector />
-                  ) : (
-                    <div className="w-7 shrink-0 sm:w-14" />
-                  )}
-                </div>
-              ))}
-              {Array.from({ length: pad }).map((_, i) => (
-                <div 
-                  key={`pad-${i}`} 
-                  className={`flex flex-1 ${reverse ? "flex-row-reverse" : ""}`}
-                >
-                  <div className="flex-1" />
-                  <div className="w-7 shrink-0 sm:w-14" />
-                </div>
-              ))}
+                );
+              })}
             </div>
             {!isLastRow && (
               <VConnector cols={cols} side={reverse ? "left" : "right"} />
