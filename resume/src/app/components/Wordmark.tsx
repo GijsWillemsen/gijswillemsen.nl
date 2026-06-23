@@ -1,6 +1,6 @@
 import svgPaths from "../../imports/Resume/svg-j8xt1btrdk";
 
-/** Large grain-textured "RESUME" wordmark from the Figma design. */
+/** Large grain-textured "RESUME" wordmark. */
 export function Wordmark() {
   return (
     <div className="mx-auto w-full max-w-[760px]">
