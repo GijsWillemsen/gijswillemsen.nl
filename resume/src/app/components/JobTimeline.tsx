@@ -82,7 +82,10 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
           <div key={r}>
             <div className={`flex ${reverse ? "flex-row-reverse" : ""}`}>
               {row.map((item, i) => (
-                <div key={i} className="flex flex-1">
+                <div 
+                  key={i} 
+                  className={`flex flex-1 ${reverse ? "flex-row-reverse" : ""}`}
+                >
                   <div className="flex-1">
                     {item.kind === "job" ? (
                       <JobCard job={item.job} />
@@ -90,11 +93,23 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
                       <GhostCard />
                     )}
                   </div>
-                  {i < row.length - 1 && <HConnector />}
+                  {/* Real connector between items, invisible spacer at the end of the row
+                      so all cards maintain the exact same flex-1 width without elongation */}
+                  {i < row.length - 1 ? (
+                    <HConnector />
+                  ) : (
+                    <div className="w-7 shrink-0 sm:w-14" />
+                  )}
                 </div>
               ))}
               {Array.from({ length: pad }).map((_, i) => (
-                <div key={`pad-${i}`} className="flex-1" />
+                <div 
+                  key={`pad-${i}`} 
+                  className={`flex flex-1 ${reverse ? "flex-row-reverse" : ""}`}
+                >
+                  <div className="flex-1" />
+                  <div className="w-7 shrink-0 sm:w-14" />
+                </div>
               ))}
             </div>
             {!isLastRow && (
