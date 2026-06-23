@@ -1,12 +1,14 @@
 import { useSiteInfo } from "@/hooks/useSiteInfo";
 
 interface FooterProps {
+  onHome?: () => void;
   onResume?: () => void;
   onProjects?: () => void;
 }
 
-export function Footer({ onResume, onProjects }: FooterProps) {
+export function Footer({ onHome, onResume, onProjects }: FooterProps) {
   const { data: siteInfo } = useSiteInfo();
+  const handleHome = onHome ?? (() => { window.location.href = siteInfo.navigation.home; });
   const handleResume = onResume ?? (() => { window.location.href = siteInfo.navigation.resume; });
   const handleProjects = onProjects ?? (() => { window.location.href = siteInfo.navigation.projects; });
 
@@ -16,6 +18,13 @@ export function Footer({ onResume, onProjects }: FooterProps) {
         <div className="grid grid-cols-3 gap-8">
           <div className="flex flex-col gap-4">
             <p className="text-[11px] font-bold text-white/40 tracking-widest uppercase">Pages</p>
+            <button
+              type="button"
+              onClick={handleHome}
+              className="text-left text-[14px] text-white/80 hover:text-white transition-colors duration-200 w-fit"
+            >
+              Home
+            </button>
             <button
               type="button"
               onClick={handleProjects}

@@ -39,6 +39,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
           <div className="flex flex-col gap-4">
             <ColumnLabel>Pages</ColumnLabel>
+            <FooterLink href={siteInfo.navigation.home} label="Home" />
             <FooterLink href={siteInfo.navigation.projects} label="Projects" />
             <FooterLink href={siteInfo.navigation.resume} label="Resume" />
           </div>

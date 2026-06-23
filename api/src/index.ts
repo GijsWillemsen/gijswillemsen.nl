@@ -120,7 +120,7 @@ export default {
             github_url, github_handle,
             makerworld_url, makerworld_handle,
             copyright_json,
-            nav_resume, nav_projects,
+            nav_resume, nav_projects, nav_home,
             brand
           ] = await Promise.all([
             env.KV.get("country"),
@@ -134,6 +134,7 @@ export default {
             env.KV.get("copyright", "json"),
             env.KV.get("nav_resume"),
             env.KV.get("nav_projects"),
+            env.KV.get("nav_home"),
             env.KV.get("brand")
           ]);
 
@@ -162,6 +163,7 @@ export default {
           const navigation = { ...siteInfo.navigation };
           if (nav_resume) navigation.resume = nav_resume;
           if (nav_projects) navigation.projects = nav_projects;
+          if (nav_home) navigation.home = nav_home;
           siteInfo.navigation = navigation;
           
           if (brand) siteInfo.brand = brand;

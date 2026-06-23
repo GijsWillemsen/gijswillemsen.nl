@@ -17,6 +17,7 @@ export interface SiteInfo {
   navigation: {
     resume: string;
     projects: string;
+    home: string;
   };
   brand: string;
 }
