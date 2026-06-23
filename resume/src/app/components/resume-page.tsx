@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { defaultContent, fetchContent, type ResumeContent } from "../lib/content";
+import { ImageWithFallback } from "./ImageWithFallback";
+import imgSableLogo from "../../../../home/src/imports/home/34e1a05dacba882243b613622d41219303fb8cb9.png";
+import imgWlmsnLogo from "../../../../home/src/imports/home/dd38095cc809e55f1fdd3091393db1050e65d719.png";
 import { useSiteInfo } from "@/hooks/useSiteInfo";
 import { Wordmark } from "./Wordmark";
 import { JobTimeline } from "./JobTimeline";
@@ -87,6 +90,21 @@ export function ResumePage() {
 
       <WaveBand />
       <SiteFooter />
+      <div className="fixed bottom-4 right-4 flex items-center gap-2 opacity-30 hover:opacity-60 transition-opacity duration-300 z-50">
+        <div className="relative size-[41px] overflow-hidden">
+          <ImageWithFallback alt="WLMSN logo" className="absolute inset-0 max-w-none object-cover size-full" src={imgWlmsnLogo} />
+        </div>
+        <div className="relative size-[47px] overflow-hidden">
+          <ImageWithFallback alt="SABLE logo" className="absolute h-[160.47%] left-[-87.58%] max-w-none top-[-36.1%] w-[285.27%]" src={imgSableLogo} />
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-60 transition-opacity duration-300 focus:outline-none z-50"
+      >
+        {siteInfo.brand}
+      </button>
     </div>
   );
 }
