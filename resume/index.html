@@ -56,14 +56,7 @@
           function startInactive() {
             clearAll();
             isAnimating = true;
-            function cycle() {
-              document.title = '(⇀‿‿↼) Zzz!';
-              inactiveTimeout = setTimeout(() => {
-                if (document.hidden) document.title = '(≖‿‿≖)';
-              }, 10000);
-            }
-            cycle();
-            inactiveInterval = setInterval(cycle, 15000);
+            document.title = '(⇀‿‿↼) Zzz!';
           }
 
           document.addEventListener('visibilitychange', () => {
