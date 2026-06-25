@@ -10,8 +10,66 @@
       <meta name="robots" content="noindex, nofollow" />
       <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
       
-      <script type="module" crossorigin src="/assets/index-CxM7EQ3F.js"></script>
-      <link rel="stylesheet" crossorigin href="/assets/index-DNnKddF_.css">
+      <script>
+        (function() {
+          let originalTitle = document.title;
+          let isAnimating = false;
+          let activeTimer, activeStopTimer, activeAnimationInterval;
+          let inactiveInterval, inactiveTimeout;
+
+          setInterval(() => {
+            if (!isAnimating && !document.title.includes('‿')) {
+              originalTitle = document.title;
+            }
+          }, 500);
+
+          function clearAll() {
+            clearTimeout(activeTimer);
+            clearTimeout(activeStopTimer);
+            clearTimeout(inactiveTimeout);
+            clearInterval(activeAnimationInterval);
+            clearInterval(inactiveInterval);
+            if (isAnimating) {
+              isAnimating = false;
+              document.title = originalTitle;
+            }
+          }
+
+          function startActive() {
+            clearAll();
+            activeTimer = setTimeout(() => {
+              isAnimating = true;
+              let state = 0;
+              document.title = '( ◕‿◕)';
+              activeAnimationInterval = setInterval(() => {
+                state = 1 - state;
+                document.title = state === 0 ? '( ◕‿◕)' : '(◕‿◕ )';
+              }, 1000);
+
+              activeStopTimer = setTimeout(() => {
+                clearInterval(activeAnimationInterval);
+                isAnimating = false;
+                if (!document.hidden) document.title = originalTitle;
+              }, 30000);
+            }, 30000);
+          }
+
+          function startInactive() {
+            clearAll();
+            isAnimating = true;
+            document.title = '(⇀‿‿↼) Zzz!';
+          }
+
+          document.addEventListener('visibilitychange', () => {
+            if (document.hidden) startInactive();
+            else startActive();
+          });
+
+          startActive();
+        })();
+      </script>
+      <script type="module" crossorigin src="/assets/index-CN28f8EE.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/index-BK-RGFKb.css">
     </head>
 
     <body>
