@@ -242,7 +242,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         <button
           type="button"
           onClick={handleResume}
-          className="absolute border-2 border-[#f2f1f0] border-solid h-[53px] left-[1415px] rounded-[15px] top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white whitespace-nowrap cursor-pointer hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white hover:scale-105 active:scale-95 transition-all"
+          className="absolute border-2 border-[#f2f1f0] border-solid h-[53px] left-[1415px] rounded-[15px] top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           data-name="Resume button"
         >
           Resume
@@ -250,7 +250,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         <button
           type="button"
           onClick={handleProjects}
-          className="absolute border-2 border-[#f2f1f0] border-solid h-[53px] left-[1620px] rounded-[15px] top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white whitespace-nowrap cursor-pointer hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white hover:scale-105 active:scale-95 transition-all"
+          className="absolute border-2 border-[#f2f1f0] border-solid h-[53px] left-[1620px] rounded-[15px] top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           data-name="Projects button"
         >
           Projects
@@ -285,7 +285,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
     <button
       type="button"
       onClick={handleBrand}
-      className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-100 hover:text-white hover:scale-110 active:scale-95 origin-bottom-left transition-all duration-300 focus:outline-none z-50"
+      className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-100 hover:text-white transition-opacity duration-300 focus:outline-none z-50"
     >
       {siteInfo.brand}
     </button>

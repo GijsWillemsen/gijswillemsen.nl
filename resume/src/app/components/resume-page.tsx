@@ -34,12 +34,6 @@ export function ResumePage() {
     return () => { active = false; };
   }, []);
 
-  const Loader = () => (
-    <div className="flex w-full items-center justify-center py-32">
-      <div className="size-10 animate-spin rounded-full border-4 border-white/10 border-t-white/80" />
-    </div>
-  );
-
   return (
     <div className="min-h-screen w-full bg-[#181818]">
       <div className="mx-auto max-w-[1500px] px-6 pt-10 sm:px-12 sm:pt-20">
@@ -65,37 +59,39 @@ export function ResumePage() {
 
         <Tabs defaultValue="jobs" className="mb-28 w-full">
           <TabsList className="mb-12 flex w-full flex-wrap justify-center gap-2 bg-transparent p-0">
-            <TabsTrigger value="jobs" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/20 hover:scale-105 active:scale-95 transition-all cursor-pointer">Jobs</TabsTrigger>
-            <TabsTrigger value="certificates" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/20 hover:scale-105 active:scale-95 transition-all cursor-pointer">Certificates</TabsTrigger>
-            <TabsTrigger value="education" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/20 hover:scale-105 active:scale-95 transition-all cursor-pointer">Education</TabsTrigger>
-            <TabsTrigger value="languages" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/20 hover:scale-105 active:scale-95 transition-all cursor-pointer">Languages</TabsTrigger>
-            <TabsTrigger value="case-studies" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/20 hover:scale-105 active:scale-95 transition-all cursor-pointer">Case Studies</TabsTrigger>
-            <TabsTrigger value="skills" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/20 hover:scale-105 active:scale-95 transition-all cursor-pointer">Skills</TabsTrigger>
+            <TabsTrigger value="jobs" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5 hover:text-white transition-colors duration-300">Jobs</TabsTrigger>
+            <TabsTrigger value="certificates" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5 hover:text-white transition-colors duration-300">Certificates</TabsTrigger>
+            <TabsTrigger value="education" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5 hover:text-white transition-colors duration-300">Education</TabsTrigger>
+            <TabsTrigger value="languages" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5 hover:text-white transition-colors duration-300">Languages</TabsTrigger>
+            <TabsTrigger value="case-studies" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5 hover:text-white transition-colors duration-300">Case Studies</TabsTrigger>
+            <TabsTrigger value="skills" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5 hover:text-white transition-colors duration-300">Skills</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="jobs">
-            {isLoading ? <Loader /> : <JobTimeline jobs={content.jobs} />}
+          <div className={`transition-opacity duration-500 ${isLoading ? 'animate-pulse opacity-50' : 'opacity-100'}`}>
+            <TabsContent value="jobs">
+            <JobTimeline jobs={content.jobs} />
           </TabsContent>
 
           <TabsContent value="certificates">
-            {isLoading ? <Loader /> : <Certificates items={content.certificates} />}
+            <Certificates items={content.certificates} />
           </TabsContent>
 
           <TabsContent value="education">
-            {isLoading ? <Loader /> : <Education items={content.education} />}
+            <Education items={content.education} />
           </TabsContent>
 
           <TabsContent value="languages">
-            {isLoading ? <Loader /> : <Languages items={content.languages} />}
+            <Languages items={content.languages} />
           </TabsContent>
 
           <TabsContent value="case-studies">
-            {isLoading ? <Loader /> : <CaseStudies items={content.caseStudies} />}
+            <CaseStudies items={content.caseStudies} />
           </TabsContent>
 
           <TabsContent value="skills">
-            {isLoading ? <Loader /> : <TechnicalSkills groups={content.skillGroups} />}
+            <TechnicalSkills groups={content.skillGroups} />
           </TabsContent>
+          </div>
         </Tabs>
 
       </div>
@@ -113,7 +109,7 @@ export function ResumePage() {
       <button
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-100 hover:text-white hover:scale-110 active:scale-95 origin-bottom-left transition-all duration-300 focus:outline-none z-50"
+        className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-100 hover:text-white transition-opacity duration-300 focus:outline-none z-50"
       >
         {siteInfo.brand}
       </button>
