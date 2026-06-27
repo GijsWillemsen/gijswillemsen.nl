@@ -101,7 +101,7 @@ export function ResumePage() {
       <button
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-100 hover:text-white transition-all duration-300 focus:outline-none z-50"
+        className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-white/30 hover:text-white whitespace-nowrap cursor-pointer transition-colors duration-300 focus:outline-none z-50"
       >
         {siteInfo.brand}
       </button>
