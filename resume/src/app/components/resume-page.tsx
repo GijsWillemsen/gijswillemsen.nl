@@ -20,17 +20,11 @@ const FONT = "'Silkscreen', monospace";
 
 export function ResumePage() {
   const [content, setContent] = useState<ResumeContent>(defaultContent);
-  const [isLoading, setIsLoading] = useState(true);
   const { data: siteInfo } = useSiteInfo();
 
   useEffect(() => {
     let active = true;
-    fetchContent().then((c) => { 
-      if (active) {
-        setContent(c);
-        setIsLoading(false);
-      }
-    });
+    fetchContent().then((c) => { if (active) setContent(c); });
     return () => { active = false; };
   }, []);
 
@@ -59,16 +53,15 @@ export function ResumePage() {
 
         <Tabs defaultValue="jobs" className="mb-28 w-full">
           <TabsList className="mb-12 flex w-full flex-wrap justify-center gap-2 bg-transparent p-0">
-            <TabsTrigger value="jobs" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5 hover:text-white transition-colors duration-300">Jobs</TabsTrigger>
-            <TabsTrigger value="certificates" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5 hover:text-white transition-colors duration-300">Certificates</TabsTrigger>
-            <TabsTrigger value="education" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5 hover:text-white transition-colors duration-300">Education</TabsTrigger>
-            <TabsTrigger value="languages" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5 hover:text-white transition-colors duration-300">Languages</TabsTrigger>
-            <TabsTrigger value="case-studies" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5 hover:text-white transition-colors duration-300">Case Studies</TabsTrigger>
-            <TabsTrigger value="skills" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5 hover:text-white transition-colors duration-300">Skills</TabsTrigger>
+            <TabsTrigger value="jobs" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2">Jobs</TabsTrigger>
+            <TabsTrigger value="certificates" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2">Certificates</TabsTrigger>
+            <TabsTrigger value="education" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2">Education</TabsTrigger>
+            <TabsTrigger value="languages" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2">Languages</TabsTrigger>
+            <TabsTrigger value="case-studies" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2">Case Studies</TabsTrigger>
+            <TabsTrigger value="skills" style={{ fontFamily: FONT }} className="data-[state=active]:bg-white/10 data-[state=active]:text-white text-white/60 border border-white/10 rounded-full px-4 py-2">Skills</TabsTrigger>
           </TabsList>
 
-          <div className={`transition-opacity duration-500 ${isLoading ? 'animate-pulse opacity-50' : 'opacity-100'}`}>
-            <TabsContent value="jobs">
+          <TabsContent value="jobs">
             <JobTimeline jobs={content.jobs} />
           </TabsContent>
 
@@ -91,7 +84,6 @@ export function ResumePage() {
           <TabsContent value="skills">
             <TechnicalSkills groups={content.skillGroups} />
           </TabsContent>
-          </div>
         </Tabs>
 
       </div>
@@ -109,7 +101,7 @@ export function ResumePage() {
       <button
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-100 hover:text-white transition-opacity duration-300 focus:outline-none z-50"
+        className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-60 transition-opacity duration-300 focus:outline-none z-50"
       >
         {siteInfo.brand}
       </button>

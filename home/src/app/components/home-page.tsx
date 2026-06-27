@@ -285,7 +285,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
     <button
       type="button"
       onClick={handleBrand}
-      className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-100 hover:text-white transition-opacity duration-300 focus:outline-none z-50"
+      className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-[#f2f1f0] opacity-30 whitespace-nowrap cursor-pointer hover:opacity-60 transition-opacity duration-300 focus:outline-none z-50"
     >
       {siteInfo.brand}
     </button>
