@@ -242,7 +242,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         <button
           type="button"
           onClick={handleResume}
-          className="absolute h-[53px] left-[1415px] rounded-full top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white/60 bg-white/5 border border-white/10 whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          className="absolute h-[53px] left-[1415px] rounded-full top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white/60 bg-[#181818] border border-white/10 whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           data-name="Resume button"
         >
           Resume
@@ -250,7 +250,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         <button
           type="button"
           onClick={handleProjects}
-          className="absolute h-[53px] left-[1620px] rounded-full top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white/60 bg-white/5 border border-white/10 whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          className="absolute h-[53px] left-[1620px] rounded-full top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white/60 bg-[#181818] border border-white/10 whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           data-name="Projects button"
         >
           Projects
