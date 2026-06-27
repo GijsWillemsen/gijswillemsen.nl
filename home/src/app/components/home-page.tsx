@@ -243,6 +243,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
           type="button"
           onClick={handleResume}
           className="absolute h-[53px] left-[1415px] rounded-full top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white/60 bg-[#181818] border border-white/10 whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          style={{ cursor: 'pointer' }}
           data-name="Resume button"
         >
           Resume
@@ -251,6 +252,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
           type="button"
           onClick={handleProjects}
           className="absolute h-[53px] left-[1620px] rounded-full top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white/60 bg-[#181818] border border-white/10 whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          style={{ cursor: 'pointer' }}
           data-name="Projects button"
         >
           Projects
@@ -286,6 +288,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
       type="button"
       onClick={handleBrand}
       className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-white/30 hover:text-white whitespace-nowrap cursor-pointer transition-colors duration-300 focus:outline-none z-50"
+      style={{ cursor: 'pointer' }}
     >
       {siteInfo.brand}
     </button>

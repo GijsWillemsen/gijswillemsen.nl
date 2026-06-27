@@ -22,6 +22,7 @@ export function Footer({ onHome, onResume, onProjects }: FooterProps) {
               type="button"
               onClick={handleHome}
               className="text-left text-[14px] text-white/80 hover:text-white transition-colors duration-200 w-fit"
+              style={{ cursor: 'pointer' }}
             >
               Home
             </button>
@@ -29,6 +30,7 @@ export function Footer({ onHome, onResume, onProjects }: FooterProps) {
               type="button"
               onClick={handleProjects}
               className="text-left text-[14px] text-white/80 hover:text-white transition-colors duration-200 w-fit"
+              style={{ cursor: 'pointer' }}
             >
               Projects
             </button>
@@ -36,6 +38,7 @@ export function Footer({ onHome, onResume, onProjects }: FooterProps) {
               type="button"
               onClick={handleResume}
               className="text-left text-[14px] text-white/80 hover:text-white transition-colors duration-200 w-fit"
+              style={{ cursor: 'pointer' }}
             >
               Resume
             </button>
@@ -48,6 +51,7 @@ export function Footer({ onHome, onResume, onProjects }: FooterProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-[14px] text-white/80 hover:text-white transition-colors duration-200 w-fit"
+              style={{ cursor: 'pointer' }}
             >
               Github
             </a>
@@ -56,6 +60,7 @@ export function Footer({ onHome, onResume, onProjects }: FooterProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-[14px] text-white/80 hover:text-white transition-colors duration-200 w-fit"
+              style={{ cursor: 'pointer' }}
             >
               Makerworld
             </a>
@@ -66,6 +71,7 @@ export function Footer({ onHome, onResume, onProjects }: FooterProps) {
             <a
               href={`mailto:${siteInfo.contact.email}`}
               className="text-[14px] text-white/80 hover:text-white transition-colors duration-200 w-fit"
+              style={{ cursor: 'pointer' }}
             >
               {siteInfo.contact.email}
             </a>
