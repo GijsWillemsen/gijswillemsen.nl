@@ -1,0 +1,36 @@
+import { SVGProps } from "react"
+
+export function Wordmark(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="100%" height="auto" viewBox="0 0 1073 168" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <g filter="url(#filter0_n_56_34)">
+        <path d="M959 0L933.5 69.5L990 113.5C988.167 120.167 984.3 133.6 983.5 134C982.7 134.4 961.5 134.167 951 134L959.5 110H919.5L898 168H1013L1038 96L983.5 54L990 34.5H1018.5L1011 56H1053L1072.5 0H959Z" fill="white"/>
+        <path d="M830 0L817.5 37H852.5L804.5 168H845.5L892.5 37H926.5L941.5 0H830Z" fill="white"/>
+        <path d="M704.5 0L649.5 168H764.5L784 111H741.5L735.5 134.5H701L733.5 33.5H766.5L757.5 62H797.5L815.5 0H704.5Z" fill="white"/>
+        <path d="M584.5 0L527.5 168H634L646.5 132.5H580L592 100.5H644.5L658 66H602.5L615 37H674L688 0H584.5Z" fill="white"/>
+        <path d="M437 108.5L415.5 168H510L566 0H524L479 132.5H466L475.5 108.5H437Z" fill="white"/>
+        <path fillRule="evenodd" clipRule="evenodd" d="M340.5 0L279.5 168H401.5L461 0H340.5ZM333.5 130L367.5 37H406L372 130H333.5Z" fill="white"/>
+        <path fillRule="evenodd" clipRule="evenodd" d="M199.5 0L140.5 168H179.5L202.5 105L265 168L283 125L229.5 78H289.5L319.5 0H199.5ZM257 59L268 28H231.5L220 59H257Z" fill="white"/>
+        <path fillRule="evenodd" clipRule="evenodd" d="M0 168L61 0H179.5L140.5 105L62.5 104.5L40.5 168H0ZM76 71L91 28H129L113 71H76Z" fill="white"/>
+      </g>
+      <defs>
+        <filter id="filter0_n_56_34" x="0" y="0" width="1072.5" height="168" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+          <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+          <feTurbulence type="fractalNoise" baseFrequency="0.5 0.5" stitchTiles="stitch" numOctaves="3" result="noise" seed="9248" />
+          <feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+          <feComponentTransfer in="alphaNoise" result="coloredNoise1">
+            <feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+          </feComponentTransfer>
+          <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
+          <feFlood floodColor="#002BFF" result="color1Flood" />
+          <feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+          <feMerge result="effect1_noise_56_34">
+            <feMergeNode in="shape" />
+            <feMergeNode in="color1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
+  )
+}
