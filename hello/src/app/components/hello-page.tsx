@@ -4,8 +4,7 @@ import { Wordmark } from "./Wordmark";
 import { useSiteInfo } from "@/hooks/useSiteInfo";
 
 export function HelloPage() {
-  const siteInfo = useSiteInfo();
-
+  const { data: siteInfo } = useSiteInfo();
   return (
     <div className="min-h-screen bg-[#0a0a0a] relative overflow-hidden flex flex-col selection:bg-white/20">
       <div 
