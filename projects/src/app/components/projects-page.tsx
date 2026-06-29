@@ -1,60 +1,20 @@
-import { ArrowLeft, Box, Hammer, Globe, Cpu, Loader2, Pause, Coffee } from "lucide-react";
+import { Move3d, Globe, Cpu, Loader, Pause, GlobeLock, ArrowLeft } from "lucide-react";
 import { WaveBand } from "./WaveBand";
 import { Wordmark } from "./Wordmark";
+import { Footer as SiteFooter } from "./footer";
+import { ImageWithFallback } from "./ImageWithFallback";
 import { useSiteInfo } from "@/hooks/useSiteInfo";
 
-const projects = [
-  {
-    title: "3D Printer Grip & Damper Feet",
-    description: "Stabilizer and grip feet designed for 3D printers, available on MakerWorld.",
-    link: "https://makerworld.com/en/models/1649541-3d-printer-stabilizer-and-grip-feet",
-    icon: Box,
-    status: "active"
-  },
-  {
-    title: "3D Printer Bed Scraper",
-    description: "A durable bed scraper to easily remove prints without damaging the surface.",
-    link: "https://makerworld.com/en/models/1646029-bed-scraper",
-    icon: Hammer,
-    status: "active"
-  },
-  {
-    title: "This Website",
-    description: "A neuromorphic portfolio built with React, Tailwind, and Cloudflare Workers.",
-    link: "https://gijswillemsen.nl",
-    icon: Globe,
-    status: "active"
-  },
-  {
-    title: "Exoskeleton AI Project",
-    description: "An advanced exoskeleton powered by AI. Currently on pause.",
-    link: "https://ko-fi.com/C0C01DUUA1",
-    icon: Cpu,
-    status: "paused",
-    linkText: "Support on Ko-fi",
-    linkIcon: Coffee
-  },
-  {
-    title: "More Projects Coming",
-    description: "I'm always working on something new in engineering or development.",
-    link: "#",
-    icon: Loader2,
-    status: "pending"
-  }
-];
+import imgSableLogo from "../../../../home/src/imports/home/34e1a05dacba882243b613622d41219303fb8cb9.png";
+import imgWlmsnLogo from "../../../../home/src/imports/home/dd38095cc809e55f1fdd3091393db1050e65d719.png";
+
+const FONT = "'Silkscreen', monospace";
 
 export function ProjectsPage() {
   const { data: siteInfo } = useSiteInfo();
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] relative overflow-hidden flex flex-col selection:bg-white/20 cursor-default">
-      <a 
-        href={siteInfo.navigation.home}
-        className="fixed top-6 left-6 z-50 flex items-center px-4 py-2 bg-white/5 border border-white/10 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-all backdrop-blur-md"
-      >
-        <ArrowLeft className="w-4 h-4 mr-2" />
-        <span className="font-['Fira_Code',monospace] text-sm">Return Home</span>
-      </a>
+    <div className="min-h-screen bg-[#0a0a0a] relative overflow-hidden flex flex-col selection:bg-white/20">
       <div 
         className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -63,73 +23,145 @@ export function ProjectsPage() {
       />
       <div className="fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-[#0a0a0a] to-[#0a0a0a] pointer-events-none" />
 
-      <main className="relative z-10 flex-grow flex flex-col items-center pt-24 pb-32 px-6">
-        <div className="w-full max-w-5xl">
-          <header className="mb-16 text-center">
-            <Wordmark className="w-full max-w-[500px] mx-auto mb-6" />
-            <p className="text-xl text-white/60 font-['Fira_Code',monospace] tracking-wider">
-              @gijswillemsen
-            </p>
-          </header>
+      <main className="relative z-10 flex-grow flex flex-col items-center pt-10 sm:pt-20 pb-32 px-6">
+        <div className="w-full max-w-[1500px]">
+          <a 
+            href={siteInfo.navigation.home} 
+            className="mb-8 flex w-fit items-center gap-2 text-white/50 transition-colors hover:text-white mx-auto sm:mx-0"
+            style={{ fontFamily: FONT, fontSize: 14 }}
+          >
+            <ArrowLeft size={16} />
+            Back to Home
+          </a>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-['Fira_Code',monospace]">
-            {projects.map((project, idx) => {
-              const Icon = project.icon;
-              const LinkIcon = project.linkIcon;
-              
-              if (project.status === "pending") {
-                return (
-                  <div key={idx} className="flex flex-col p-8 bg-white/5 border border-white/10 rounded-2xl md:col-span-2 items-center text-center">
-                    <Loader2 className="w-8 h-8 text-white/40 animate-spin mb-4" />
-                    <h2 className="text-xl text-white/70 font-medium mb-2">{project.title}</h2>
-                    <p className="text-white/40">{project.description}</p>
+          <div className="w-full max-w-4xl mx-auto">
+            <header className="mb-8 text-center">
+              <Wordmark className="w-full max-w-[600px] mx-auto" />
+            </header>
+
+            <a 
+              href="http://hxvjq4so7a6kjhynhjm3xwwsdczh4xvnzvwh4p4xhxvtqsazqp74t7qd.onion" 
+              target="_blank" 
+              rel="noreferrer"
+              className="flex items-center justify-center gap-2 mb-12 p-3 bg-black/50 hover:bg-black/80 border border-white/10 rounded-lg transition-all duration-300 font-['Fira_Code',monospace] text-white/90 hover:text-white group hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] mx-auto max-w-lg"
+            >
+              <GlobeLock className="w-5 h-5 text-blue-500 group-hover:text-blue-400 transition-colors" />
+              <span>Accessible on the darkweb!!!</span>
+            </a>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
+              {/* Project 1 */}
+              <a 
+                href="https://makerworld.com/en/models/1649541-3d-printer-stabilizer-and-grip-feet" 
+                target="_blank" 
+                rel="noreferrer"
+                className="flex flex-col justify-between p-6 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl transition-all duration-300 group hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(59,130,246,0.15)]"
+              >
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Move3d className="w-6 h-6 text-blue-500" />
+                    <h3 className="text-xl font-bold text-white/90 group-hover:text-white transition-colors">3D Printer Grip & Damper Feet</h3>
                   </div>
-                );
-              }
-
-              return (
-                <a 
-                  key={idx}
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`flex flex-col p-8 bg-white/5 border rounded-2xl transition-all duration-500 group relative overflow-hidden cursor-pointer ${
-                    project.status === "paused" 
-                      ? "border-orange-500/20 hover:border-orange-500/50 hover:bg-white/10 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]" 
-                      : "border-white/10 hover:border-blue-500/50 hover:bg-white/10 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]"
-                  }`}
-                >
-                  <div className="flex items-start justify-between mb-6 relative z-10">
-                    <div className={`p-4 rounded-xl ${project.status === 'paused' ? 'bg-orange-500/10' : 'bg-blue-500/10'} group-hover:scale-110 transition-transform duration-500`}>
-                      <Icon className={`w-8 h-8 ${project.status === 'paused' ? 'text-orange-400' : 'text-blue-400'}`} />
-                    </div>
-                    {project.status === "paused" && (
-                      <div className="flex items-center space-x-2 bg-orange-500/20 px-3 py-1 rounded-full border border-orange-500/30">
-                        <Pause className="w-3 h-3 text-orange-400" />
-                        <span className="text-xs text-orange-400 font-medium uppercase tracking-wider">Paused</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <h2 className="text-2xl text-white/90 font-medium mb-3 relative z-10 group-hover:text-white transition-colors">{project.title}</h2>
-                  <p className="text-white/50 leading-relaxed mb-8 flex-grow relative z-10 group-hover:text-white/70 transition-colors">
-                    {project.description}
+                  <p className="text-white/60 leading-relaxed">
+                    Shock absorbing feet designed to reduce vibration, add grip, and improve print stability. Helps minimize noise and movement during prints. Easy to print and install. Small upgrade, big impact.
                   </p>
+                </div>
+              </a>
 
-                  <div className={`inline-flex items-center space-x-2 text-sm font-medium transition-colors relative z-10 ${
-                    project.status === 'paused' ? 'text-orange-400/70 group-hover:text-orange-400' : 'text-blue-400/70 group-hover:text-blue-400'
-                  }`}>
-                    {LinkIcon ? <LinkIcon className="w-4 h-4" /> : null}
-                    <span>{project.linkText || "View Project →"}</span>
+              {/* Project 2 */}
+              <a 
+                href="https://makerworld.com/en/models/1646029-bed-scraper" 
+                target="_blank" 
+                rel="noreferrer"
+                className="flex flex-col justify-between p-6 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl transition-all duration-300 group hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(59,130,246,0.15)]"
+              >
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Move3d className="w-6 h-6 text-blue-500" />
+                    <h3 className="text-xl font-bold text-white/90 group-hover:text-white transition-colors">3D Printer Bed Scraper</h3>
                   </div>
-                </a>
-              );
-            })}
+                  <p className="text-white/60 leading-relaxed">
+                    A compact and practical 3D printed scraper designed for easy blade swapping. Helps remove prints cleanly without damaging the bed. Print once, reuse often.
+                  </p>
+                </div>
+              </a>
+
+              {/* Project 3 */}
+              <a 
+                href={siteInfo.navigation.home}
+                className="flex flex-col justify-between p-6 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl transition-all duration-300 group hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(59,130,246,0.15)]"
+              >
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Globe className="w-6 h-6 text-blue-500" />
+                    <h3 className="text-xl font-bold text-white/90 group-hover:text-white transition-colors">This Website</h3>
+                  </div>
+                  <p className="text-white/60 leading-relaxed">
+                    My personal site showcasing 3D printing projects, CTF challenges and my resume. A space where I share what I’ve built, solved, and learned along the way.
+                  </p>
+                </div>
+              </a>
+
+              {/* Project 4 - Paused */}
+              <div className="flex flex-col justify-between p-6 bg-white/5 border border-white/10 rounded-2xl relative opacity-85 hover:opacity-100 transition-opacity">
+                <Pause className="absolute top-6 right-6 w-5 h-5 text-white/40" />
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Cpu className="w-6 h-6 text-blue-500" />
+                    <h3 className="text-xl font-bold text-white/90">Exoskeleton AI Project</h3>
+                  </div>
+                  <p className="text-white/60 leading-relaxed mb-6">
+                    A compact, AI-integrated exoskeleton featuring smart battery monitoring, offline assistant capabilities, and real-time voice control. Support development and innovation in wearable robotics!
+                  </p>
+                  <div className="mt-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <a 
+                      href="https://ko-fi.com/C0C01DUUA1"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center px-4 py-2 bg-[#72a4f2]/20 text-[#72a4f2] hover:bg-[#72a4f2]/30 border border-[#72a4f2]/50 rounded-lg transition-colors font-semibold shadow-[0_0_15px_rgba(114,164,242,0.15)]"
+                    >
+                      Support me on Ko-fi
+                    </a>
+                    <span className="text-sm text-white/40 italic font-['Fira_Code',monospace]">this project is paused at the moment</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 5 */}
+              <div className="flex flex-col justify-between p-6 bg-white/5 border border-white/10 rounded-2xl md:col-span-2 text-center">
+                <div>
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    <Loader className="w-6 h-6 text-blue-500 animate-[spin_3s_linear_infinite]" />
+                    <h3 className="text-xl font-bold text-white/90">More Projects Coming</h3>
+                  </div>
+                  <p className="text-white/60 leading-relaxed max-w-2xl mx-auto">
+                    This is just the beginning—I'm working on even more cool projects that will be available soon. Stay tuned for fresh drops and exciting updates!
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
 
       <WaveBand />
+      <SiteFooter />
+      <div className="fixed bottom-4 right-4 flex items-center gap-2 opacity-30 hover:opacity-60 transition-opacity duration-300 z-50">
+        <div className="relative size-[41px] overflow-hidden">
+          <ImageWithFallback alt="WLMSN logo" className="absolute inset-0 max-w-none object-cover size-full" src={imgWlmsnLogo} />
+        </div>
+        <div className="relative size-[47px] overflow-hidden">
+          <ImageWithFallback alt="SABLE logo" className="absolute h-[160.47%] left-[-87.58%] max-w-none top-[-36.1%] w-[285.27%]" src={imgSableLogo} />
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="fixed bottom-4 left-4 font-['Silkscreen',sans-serif] text-[13px] text-white/30 hover:text-white whitespace-nowrap cursor-pointer transition-colors duration-300 focus:outline-none z-50"
+        style={{ cursor: 'pointer' }}
+      >
+        {siteInfo.brand}
+      </button>
     </div>
   );
 }
