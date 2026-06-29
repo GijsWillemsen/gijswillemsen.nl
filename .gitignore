@@ -4,6 +4,7 @@ projects/node_modules/
 resume/node_modules/
 api/node_modules/
 about-me/node_modules/
+hello/node_modules/
 
 dist/
 home/dist/
@@ -11,6 +12,7 @@ projects/dist/
 resume/dist/
 api/dist/
 about-me/dist/
+hello/dist/
 
 # Wrangler local dev state
 .wrangler/

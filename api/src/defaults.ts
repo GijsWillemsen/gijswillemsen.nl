@@ -36,6 +36,7 @@ export const DEFAULT_SITE_INFO: SiteInfo = {
     projects: "https://projects.gijswillemsen.nl",
     home: "https://gijswillemsen.nl",
     about: "https://about.gijswillemsen.nl",
+    hello: "https://hello.gijswillemsen.nl",
   },
   brand: "\\\\gijs willemsen \\\\WLMSN \\\\SABLE",
 };

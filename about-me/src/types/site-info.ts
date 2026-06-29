@@ -19,6 +19,7 @@ export interface SiteInfo {
     projects: string;
     home: string;
     about: string;
+    hello: string;
   };
   brand: string;
 }
