@@ -119,13 +119,15 @@ function Header() {
 interface HomePageProps {
   onResume?: () => void;
   onProjects?: () => void;
+  onAbout?: () => void;
   onBrandClick?: () => void;
 }
 
-export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) {
+export function HomePage({ onResume, onProjects, onAbout, onBrandClick }: HomePageProps) {
   const { data: siteInfo } = useSiteInfo();
   const handleResume = onResume ?? (() => { window.location.href = siteInfo.navigation.resume; });
   const handleProjects = onProjects ?? (() => { window.location.href = siteInfo.navigation.projects; });
+  const handleAbout = onAbout ?? (() => { window.location.href = siteInfo.navigation.about; });
   const handleBrand = onBrandClick ?? (() => window.scrollTo({ top: 0, behavior: "smooth" }));
   const [cyberHovered, setCyberHovered] = useState(false);
 
@@ -241,6 +243,15 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         </div>
         <button
           type="button"
+          onClick={handleAbout}
+          className="absolute h-[53px] left-[1210px] rounded-full top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white/60 bg-[#181818] border border-white/10 whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          style={{ cursor: 'pointer' }}
+          data-name="About button"
+        >
+          About
+        </button>
+        <button
+          type="button"
           onClick={handleResume}
           className="absolute h-[53px] left-[1415px] rounded-full top-[50px] w-[181px] flex items-center justify-center font-['Silkscreen',sans-serif] text-[24px] text-white/60 bg-[#181818] border border-white/10 whitespace-nowrap cursor-pointer transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           style={{ cursor: 'pointer' }}
@@ -283,7 +294,7 @@ export function HomePage({ onResume, onProjects, onBrandClick }: HomePageProps) 
         <ImageWithFallback alt="SABLE logo" className="absolute h-[160.47%] left-[-87.58%] max-w-none top-[-36.1%] w-[285.27%]" src={imgSableLogo} />
       </div>
     </div>
-    <Footer onResume={onResume} onProjects={onProjects} />
+    <Footer onHome={() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }} onResume={handleResume} onProjects={handleProjects} />
     <button
       type="button"
       onClick={handleBrand}

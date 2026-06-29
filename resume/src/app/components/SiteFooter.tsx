@@ -42,6 +42,7 @@ export function SiteFooter() {
             <FooterLink href={siteInfo.navigation.home} label="Home" />
             <FooterLink href={siteInfo.navigation.projects} label="Projects" />
             <FooterLink href={siteInfo.navigation.resume} label="Resume" />
+            <FooterLink href={siteInfo.navigation.about} label="About Me" />
           </div>
           <div className="flex flex-col gap-4">
             <ColumnLabel>Links</ColumnLabel>

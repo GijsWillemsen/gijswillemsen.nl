@@ -34,6 +34,7 @@ const DEFAULTS: SiteInfo = {
     resume: "https://resume.gijswillemsen.nl",
     projects: "https://projects.gijswillemsen.nl",
     home: "https://gijswillemsen.nl",
+    about: "https://about.gijswillemsen.nl",
   },
   brand: "\\\\gijs willemsen \\\\WLMSN \\\\SABLE",
 };

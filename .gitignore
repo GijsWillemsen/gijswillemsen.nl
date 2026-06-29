@@ -3,12 +3,14 @@ home/node_modules/
 projects/node_modules/
 resume/node_modules/
 api/node_modules/
+about-me/node_modules/
 
 dist/
 home/dist/
 projects/dist/
 resume/dist/
 api/dist/
+about-me/dist/
 
 # Wrangler local dev state
 .wrangler/

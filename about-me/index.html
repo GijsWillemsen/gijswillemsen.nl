@@ -1,0 +1,80 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>gijswillemsen.nl</title>
+      <meta name="description" content="Transform your website&#39;s homepage design into a fully functional React and TypeScript application, enhancing user experience and performance." />
+      <meta name="robots" content="noindex, nofollow" />
+      <style>html { overflow-y: scroll; } html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
+      
+      <script>
+        (function() {
+          let originalTitle = document.title;
+          let isAnimating = false;
+          let activeTimer, activeStopTimer, activeAnimationInterval;
+          let inactiveInterval, inactiveTimeout;
+
+          setInterval(() => {
+            if (!isAnimating && !document.title.includes('‿')) {
+              originalTitle = document.title;
+            }
+          }, 500);
+
+          function clearAll() {
+            clearTimeout(activeTimer);
+            clearTimeout(activeStopTimer);
+            clearTimeout(inactiveTimeout);
+            clearInterval(activeAnimationInterval);
+            clearInterval(inactiveInterval);
+            if (isAnimating) {
+              isAnimating = false;
+              document.title = originalTitle;
+            }
+          }
+
+          function startActive() {
+            clearAll();
+            activeTimer = setTimeout(() => {
+              isAnimating = true;
+              let state = 0;
+              document.title = '( ◕‿◕)';
+              activeAnimationInterval = setInterval(() => {
+                state = 1 - state;
+                document.title = state === 0 ? '( ◕‿◕)' : '(◕‿◕ )';
+              }, 1000);
+
+              activeStopTimer = setTimeout(() => {
+                clearInterval(activeAnimationInterval);
+                isAnimating = false;
+                if (!document.hidden) document.title = originalTitle;
+              }, 30000);
+            }, 30000);
+          }
+
+          function startInactive() {
+            clearAll();
+            isAnimating = true;
+            document.title = '(⇀‿‿↼) Zzz!';
+          }
+
+          document.addEventListener('visibilitychange', () => {
+            if (document.hidden) startInactive();
+            else startActive();
+          });
+
+          startActive();
+        })();
+      </script>
+    </head>
+
+    <body>
+      
+      <div id="root"></div>
+      <script type="module" src="/src/main.tsx"></script>
+      
+    </body>
+  </html>
+  
