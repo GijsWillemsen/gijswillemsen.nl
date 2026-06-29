@@ -1,11 +1,11 @@
 import svgPaths from "@/imports/Error-1/svg-4o99k3zvwb";
 import imgSableLogo from "@/imports/home/34e1a05dacba882243b613622d41219303fb8cb9.png";
 import imgWlmsnLogo from "@/imports/home/dd38095cc809e55f1fdd3091393db1050e65d719.png";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { ImageWithFallback } from "./ImageWithFallback";
 import { ScaledCanvas } from "./scaled-canvas";
 import { Footer } from "./footer";
 
-/** Intrinsic design dimensions of the imported Figma error frame. */
+
 const CANVAS_WIDTH = 1903;
 const CANVAS_HEIGHT = 1150;
 

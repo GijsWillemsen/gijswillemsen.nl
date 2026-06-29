@@ -2,6 +2,7 @@ import { Footer } from "./footer";
 import { useSiteInfo } from "@/hooks/useSiteInfo";
 import { ArrowLeft } from "lucide-react";
 import { WaveBand } from "./WaveBand";
+import { Wordmark } from "./Wordmark";
 
 const FONT = "'Silkscreen', monospace";
 
@@ -26,8 +27,12 @@ export function AboutMePage() {
         </a>
 
         {/* Page Header */}
+        <header className="mb-24">
+          <Wordmark />
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 font-['Silkscreen',sans-serif] uppercase tracking-tight text-center">System Profile: Gijs Willemsen</h1>
+        </header>
+        
         <div className="mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 font-['Silkscreen',sans-serif] uppercase tracking-tight">System Profile: Gijs Willemsen</h1>
           <p className="text-lg md:text-xl leading-relaxed text-white/70">
             I am a 15-year-old self-taught developer, hardware engineer, and infrastructure enthusiast. I am always doing something in IT, ICT, Engineering, Computer Science, Robotics, or Cybersecurity.
           </p>
