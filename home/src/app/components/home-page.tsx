@@ -11,9 +11,9 @@ import { useSiteInfo } from "@/hooks/useSiteInfo";
 const CANVAS_WIDTH = 1865;
 const CANVAS_HEIGHT = 1127;
 
-function NameHeader() {
+function NameHeader({ className }: { className?: string }) {
   return (
-    <div className="absolute h-[327.878px] left-[200px] top-[209px] w-[1004px]" data-name="name header">
+    <div className={className || "absolute h-[327.878px] left-[200px] top-[209px] w-[1004px]"} data-name="name header">
       <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1004.77 327.878">
         <g id="name header">
           <g id="header - gijs willemsen back">
@@ -133,8 +133,10 @@ export function HomePage({ onResume, onProjects, onAbout, onBrandClick }: HomePa
 
   return (
     <>
-    <ScaledCanvas width={CANVAS_WIDTH} height={CANVAS_HEIGHT} background="#181818">
-      <div className="bg-[#181818] relative w-full h-full overflow-hidden" data-name="Home page">
+    {/* DESKTOP VIEW */}
+    <div className="hidden lg:block h-screen w-full">
+      <ScaledCanvas width={CANVAS_WIDTH} height={CANVAS_HEIGHT} background="#181818">
+        <div className="bg-[#181818] relative w-full h-full overflow-hidden" data-name="Home page">
         <div className="absolute h-[478.004px] left-0 top-[437.5px] w-[1865px]">
           <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1865 478.004">
             <path d={svgPaths.p294fdc00} fill="var(--fill-0, #000C46)" id="Vector 4" />
@@ -285,7 +287,69 @@ export function HomePage({ onResume, onProjects, onAbout, onBrandClick }: HomePa
           </p>
         </div>
       </div>
-    </ScaledCanvas>
+      </ScaledCanvas>
+    </div>
+
+    {/* MOBILE VIEW */}
+    <div className="block lg:hidden min-h-screen bg-[#181818] relative overflow-x-hidden flex flex-col pt-16 pb-24 px-6 selection:bg-white/20">
+      <main className="relative z-10 flex-grow flex flex-col items-center justify-center">
+        <NameHeader className="w-full max-w-[400px] mx-auto relative aspect-[1004.77/327.878] mb-12" />
+        
+        <h2 className="font-['Silkscreen',sans-serif] text-[18px] sm:text-[22px] leading-relaxed text-white text-center mb-12 px-2">
+          ICT, Engineering, CS,
+          <br />
+          Robotics AND
+          <br />
+          <span 
+            onMouseEnter={() => setCyberHovered(true)}
+            onMouseLeave={() => setCyberHovered(false)}
+            className="text-white hover:text-[#002BFF] transition-colors duration-200 block mt-4 text-[22px] sm:text-[26px]"
+          >
+            {cyberHovered ? "Hacking (°  °)" : "CYBERSECURITY"}
+          </span>
+        </h2>
+
+        <div className="flex flex-col gap-4 w-full max-w-[280px] mb-16">
+          <button
+            onClick={handleAbout}
+            className="h-[53px] w-full rounded-full flex items-center justify-center font-['Silkscreen',sans-serif] text-[20px] text-white/60 bg-[#181818] border border-white/10 transition-colors hover:bg-white/10 hover:text-white"
+          >
+            About
+          </button>
+          <button
+            onClick={handleResume}
+            className="h-[53px] w-full rounded-full flex items-center justify-center font-['Silkscreen',sans-serif] text-[20px] text-white/60 bg-[#181818] border border-white/10 transition-colors hover:bg-white/10 hover:text-white"
+          >
+            Resume
+          </button>
+          <button
+            onClick={handleProjects}
+            className="h-[53px] w-full rounded-full flex items-center justify-center font-['Silkscreen',sans-serif] text-[20px] text-white/60 bg-[#181818] border border-white/10 transition-colors hover:bg-white/10 hover:text-white"
+          >
+            Projects
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 gap-x-4 gap-y-8 w-full max-w-[320px] pb-10">
+          <div>
+            <p className="font-['Silkscreen',sans-serif] font-bold text-[#a8a8a8] text-[12px] mb-1 uppercase">Country</p>
+            <p className="font-['Silkscreen',sans-serif] text-[14px] text-white">{siteInfo.hero.country}</p>
+          </div>
+          <div>
+            <p className="font-['Silkscreen',sans-serif] font-bold text-[#a8a8a8] text-[12px] mb-1 uppercase">Uptime</p>
+            <p className="font-['Silkscreen',sans-serif] text-[14px] text-white">{siteInfo.hero.uptime}</p>
+          </div>
+          <div>
+            <p className="font-['Silkscreen',sans-serif] font-bold text-[#a8a8a8] text-[12px] mb-1 uppercase">Language</p>
+            <p className="font-['Silkscreen',sans-serif] text-[14px] text-white">{siteInfo.hero.language}</p>
+          </div>
+          <div>
+            <p className="font-['Silkscreen',sans-serif] font-bold text-[#a8a8a8] text-[12px] mb-1 uppercase">Mail</p>
+            <a href={`mailto:${siteInfo.hero.mail}`} className="font-['Silkscreen',sans-serif] text-[14px] text-white hover:underline truncate block w-full">{siteInfo.hero.mail.toUpperCase()}</a>
+          </div>
+        </div>
+      </main>
+    </div>
     <div className="fixed bottom-4 right-4 flex items-center gap-2 opacity-30 hover:opacity-60 transition-opacity duration-300 z-50">
       <div className="relative size-[41px] overflow-hidden">
         <ImageWithFallback alt="WLMSN logo" className="absolute inset-0 max-w-none object-cover size-full" src={imgWlmsnLogo} />
