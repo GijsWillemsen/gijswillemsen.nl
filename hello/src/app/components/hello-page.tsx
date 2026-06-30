@@ -100,7 +100,7 @@ export function HelloPage() {
       </main>
 
       <WaveBand />
-      <div className="fixed bottom-4 right-4 flex items-center gap-2 opacity-30 hover:opacity-60 transition-opacity duration-300 z-50">
+      <div className="fixed bottom-4 right-4 flex flex-col items-center gap-2 opacity-30 hover:opacity-60 transition-opacity duration-300 z-50">
         <div className="relative size-[41px] overflow-hidden">
           <ImageWithFallback alt="WLMSN logo" className="absolute inset-0 max-w-none object-cover size-full" src={imgWlmsnLogo} />
         </div>
