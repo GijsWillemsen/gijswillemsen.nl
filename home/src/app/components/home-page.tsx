@@ -300,12 +300,8 @@ export function HomePage({ onResume, onProjects, onAbout, onBrandClick }: HomePa
           <br />
           Robotics AND
           <br />
-          <span 
-            onMouseEnter={() => setCyberHovered(true)}
-            onMouseLeave={() => setCyberHovered(false)}
-            className="text-white hover:text-[#002BFF] transition-colors duration-200 block mt-4 text-[22px] sm:text-[26px]"
-          >
-            {cyberHovered ? "Hacking (°  °)" : "CYBERSECURITY"}
+          <span className="text-white block mt-4 text-[22px] sm:text-[26px]">
+            CYBERSECURITY
           </span>
         </h2>
 
