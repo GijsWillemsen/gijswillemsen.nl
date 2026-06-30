@@ -1,4 +1,4 @@
-import { Move3d, Globe, Cpu, Loader, Pause, GlobeLock, ArrowLeft } from "lucide-react";
+import { Move3d, Globe, Cpu, Loader, Pause, ArrowLeft } from "lucide-react";
 import { WaveBand } from "./WaveBand";
 import { Wordmark } from "./Wordmark";
 import { Footer as SiteFooter } from "./footer";
@@ -39,15 +39,7 @@ export function ProjectsPage() {
               <Wordmark className="w-full max-w-[600px] mx-auto" />
             </header>
 
-            <a 
-              href="http://hxvjq4so7a6kjhynhjm3xwwsdczh4xvnzvwh4p4xhxvtqsazqp74t7qd.onion" 
-              target="_blank" 
-              rel="noreferrer"
-              className="flex items-center justify-center gap-2 mb-12 p-3 bg-black/50 hover:bg-black/80 border border-white/10 rounded-lg transition-all duration-300 font-['Fira_Code',monospace] text-white/90 hover:text-white group hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] mx-auto max-w-lg"
-            >
-              <GlobeLock className="w-5 h-5 text-blue-500 group-hover:text-blue-400 transition-colors" />
-              <span>Accessible on the darkweb!!!</span>
-            </a>
+
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
               {/* Project 1 */}
