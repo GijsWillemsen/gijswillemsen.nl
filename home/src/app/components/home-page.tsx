@@ -293,18 +293,6 @@ export function HomePage({ onResume, onProjects, onAbout, onBrandClick }: HomePa
     {/* MOBILE VIEW */}
     <div className="block lg:hidden min-h-screen bg-[#181818] relative overflow-x-hidden flex flex-col pt-16 pb-24 px-6 selection:bg-white/20">
       <main className="relative z-10 flex-grow flex flex-col items-center justify-center">
-        <NameHeader className="w-full max-w-[400px] mx-auto relative aspect-[1004.77/327.878] mb-12" />
-        
-        <h2 className="font-['Silkscreen',sans-serif] text-[18px] sm:text-[22px] leading-relaxed text-white text-center mb-12 px-2">
-          ICT, Engineering, CS,
-          <br />
-          Robotics AND
-          <br />
-          <span className="text-white block mt-4 text-[22px] sm:text-[26px]">
-            CYBERSECURITY
-          </span>
-        </h2>
-
         <div className="flex flex-col gap-4 w-full max-w-[280px] mb-16">
           <button
             onClick={handleAbout}
@@ -325,6 +313,14 @@ export function HomePage({ onResume, onProjects, onAbout, onBrandClick }: HomePa
             Projects
           </button>
         </div>
+
+        <NameHeader className="w-full max-w-[400px] mx-auto relative aspect-[1004.77/327.878] mb-12" />
+        
+        <h2 className="font-['Silkscreen',sans-serif] text-[18px] sm:text-[22px] leading-relaxed text-white text-center mb-16 px-2">
+          ICT, Engineering, CS,
+          <br />
+          Robotics AND CYBERSECURITY
+        </h2>
 
         <div className="grid grid-cols-2 gap-x-4 gap-y-8 w-full max-w-[320px] pb-10">
           <div>
