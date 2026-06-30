@@ -3,6 +3,9 @@ import { useSiteInfo } from "@/hooks/useSiteInfo";
 import { ArrowLeft } from "lucide-react";
 import { WaveBand } from "./WaveBand";
 import { Wordmark } from "./Wordmark";
+import { ImageWithFallback } from "./ImageWithFallback";
+import imgSableLogo from "../../../../home/src/imports/home/34e1a05dacba882243b613622d41219303fb8cb9.png";
+import imgWlmsnLogo from "../../../../home/src/imports/home/dd38095cc809e55f1fdd3091393db1050e65d719.png";
 
 const FONT = "'Silkscreen', monospace";
 
@@ -19,7 +22,7 @@ export function AboutMePage() {
         
         <a 
           href={siteInfo.navigation.home} 
-          className="mb-8 flex w-fit items-center gap-2 text-white/50 transition-colors hover:text-white"
+          className="fixed top-6 left-6 sm:top-10 sm:left-12 flex w-fit items-center gap-2 text-white/50 transition-colors hover:text-white z-50 bg-[#181818]/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10"
           style={{ fontFamily: FONT, fontSize: 14 }}
         >
           <ArrowLeft size={16} />
@@ -127,7 +130,14 @@ export function AboutMePage() {
       >
         {siteInfo.brand}
       </button>
-
+      <div className="fixed bottom-4 right-4 flex items-center gap-2 opacity-30 hover:opacity-60 transition-opacity duration-300 z-50">
+        <div className="relative size-[41px] overflow-hidden">
+          <ImageWithFallback alt="WLMSN logo" className="absolute inset-0 max-w-none object-cover size-full" src={imgWlmsnLogo} />
+        </div>
+        <div className="relative size-[47px] overflow-hidden">
+          <ImageWithFallback alt="SABLE logo" className="absolute h-[160.47%] left-[-87.58%] max-w-none top-[-36.1%] w-[285.27%]" src={imgSableLogo} />
+        </div>
+      </div>
       {/* Wave and Footer */}
       <div className="mt-auto">
         <WaveBand />

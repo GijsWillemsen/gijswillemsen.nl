@@ -33,7 +33,7 @@ export function ResumePage() {
       <div className="mx-auto max-w-[1500px] px-6 pt-10 sm:px-12 sm:pt-20">
         <a 
           href={siteInfo.navigation.home} 
-          className="mb-8 flex w-fit items-center gap-2 text-white/50 transition-colors hover:text-white"
+          className="fixed top-6 left-6 sm:top-10 sm:left-12 flex w-fit items-center gap-2 text-white/50 transition-colors hover:text-white z-50 bg-[#181818]/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10"
           style={{ fontFamily: FONT, fontSize: 14 }}
         >
           <ArrowLeft size={16} />
