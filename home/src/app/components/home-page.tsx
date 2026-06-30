@@ -6,7 +6,6 @@ import { ImageWithFallback } from "./ImageWithFallback";
 import { ScaledCanvas } from "./scaled-canvas";
 import { Footer } from "./footer";
 import { useSiteInfo } from "@/hooks/useSiteInfo";
-import { Wordmark } from "./Wordmark";
 
 
 const CANVAS_WIDTH = 1865;
@@ -124,68 +123,6 @@ interface HomePageProps {
   onBrandClick?: () => void;
 }
 
-function MobileHomeLayout({ onResume, onProjects, onAbout }: HomePageProps) {
-  const { data: siteInfo } = useSiteInfo();
-  
-  return (
-    <div className="flex flex-col items-center justify-center pt-16 pb-20 px-6">
-      <Wordmark className="w-full max-w-[300px] mb-12" />
-      <div className="text-center mb-12 space-y-4">
-        <p className="font-['Silkscreen',sans-serif] text-[20px] text-white/80 leading-relaxed max-w-sm mx-auto">
-          ICT, Engineering, CS,
-          <br />
-          Robotics AND
-        </p>
-        <p className="font-['Silkscreen',sans-serif] text-[24px] text-white">
-          CYBERSECURITY
-        </p>
-      </div>
-
-      <div className="grid grid-cols-2 gap-x-8 gap-y-8 mb-16 text-center">
-        <div>
-          <p className="font-['Silkscreen',sans-serif] font-bold text-[#a8a8a8] text-[12px] uppercase mb-2">Country</p>
-          <p className="font-['Silkscreen',sans-serif] text-white text-[14px]">{siteInfo.hero.country}</p>
-        </div>
-        <div>
-          <p className="font-['Silkscreen',sans-serif] font-bold text-[#a8a8a8] text-[12px] uppercase mb-2">Uptime</p>
-          <p className="font-['Silkscreen',sans-serif] text-white text-[14px]">{siteInfo.hero.uptime}</p>
-        </div>
-        <div>
-          <p className="font-['Silkscreen',sans-serif] font-bold text-[#a8a8a8] text-[12px] uppercase mb-2">Language</p>
-          <p className="font-['Silkscreen',sans-serif] text-white text-[14px]">{siteInfo.hero.language}</p>
-        </div>
-        <div>
-          <p className="font-['Silkscreen',sans-serif] font-bold text-[#a8a8a8] text-[12px] uppercase mb-2">Mail</p>
-          <a href={`mailto:${siteInfo.hero.mail}`} className="font-['Silkscreen',sans-serif] text-white text-[14px] hover:underline">
-            {siteInfo.hero.mail.toUpperCase()}
-          </a>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-4 w-full max-w-xs mb-10">
-        <button
-          onClick={onAbout}
-          className="h-[53px] w-full rounded-full flex items-center justify-center font-['Silkscreen',sans-serif] text-[20px] text-white/80 bg-[#181818] border border-white/10 hover:bg-white/10 hover:text-white transition-colors"
-        >
-          About
-        </button>
-        <button
-          onClick={onResume}
-          className="h-[53px] w-full rounded-full flex items-center justify-center font-['Silkscreen',sans-serif] text-[20px] text-white/80 bg-[#181818] border border-white/10 hover:bg-white/10 hover:text-white transition-colors"
-        >
-          Resume
-        </button>
-        <button
-          onClick={onProjects}
-          className="h-[53px] w-full rounded-full flex items-center justify-center font-['Silkscreen',sans-serif] text-[20px] text-white/80 bg-[#181818] border border-white/10 hover:bg-white/10 hover:text-white transition-colors"
-        >
-          Projects
-        </button>
-      </div>
-    </div>
-  );
-}
-
 export function HomePage({ onResume, onProjects, onAbout, onBrandClick }: HomePageProps) {
   const { data: siteInfo } = useSiteInfo();
   const handleResume = onResume ?? (() => { window.location.href = siteInfo.navigation.resume; });
@@ -195,9 +132,7 @@ export function HomePage({ onResume, onProjects, onAbout, onBrandClick }: HomePa
   const [cyberHovered, setCyberHovered] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#181818] flex flex-col">
-    {/* Desktop Layout */}
-    <div className="hidden lg:block w-full flex-grow relative">
+    <>
     <ScaledCanvas width={CANVAS_WIDTH} height={CANVAS_HEIGHT} background="#181818">
       <div className="bg-[#181818] relative w-full h-full overflow-hidden" data-name="Home page">
         <div className="absolute h-[478.004px] left-0 top-[437.5px] w-[1865px]">
@@ -351,12 +286,6 @@ export function HomePage({ onResume, onProjects, onAbout, onBrandClick }: HomePa
         </div>
       </div>
     </ScaledCanvas>
-    </div>
-
-    {/* Mobile Layout */}
-    <div className="block lg:hidden w-full flex-grow bg-[#181818]">
-      <MobileHomeLayout onResume={handleResume} onProjects={handleProjects} onAbout={handleAbout} />
-    </div>
     <div className="fixed bottom-4 right-4 flex items-center gap-2 opacity-30 hover:opacity-60 transition-opacity duration-300 z-50">
       <div className="relative size-[41px] overflow-hidden">
         <ImageWithFallback alt="WLMSN logo" className="absolute inset-0 max-w-none object-cover size-full" src={imgWlmsnLogo} />
@@ -374,6 +303,6 @@ export function HomePage({ onResume, onProjects, onAbout, onBrandClick }: HomePa
     >
       {siteInfo.brand}
     </button>
-    </div>
+    </>
   );
 }
